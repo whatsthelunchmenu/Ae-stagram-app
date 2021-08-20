@@ -1,6 +1,5 @@
 import 'package:ae_stagram_app/app/root.dart';
 import 'package:get/route_manager.dart';
-
 part 'app_routes.dart';
 
 class AppPages {

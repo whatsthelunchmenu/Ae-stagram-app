@@ -1,5 +1,6 @@
 import 'package:ae_stagram_app/app/binding/init_binding.dart';
 import 'package:ae_stagram_app/app/route/app_pages.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Ae-Stagram',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: mainColor,
       ),
       initialBinding: InitBinding(),
       getPages: AppPages.pages,

@@ -1,44 +1,22 @@
-import 'package:ae_stagram_app/app/controller/root_controller.dart';
-import 'package:ae_stagram_app/app/ui/android/home/home.dart';
-import 'package:ae_stagram_app/app/ui/android/mypage/mypage.dart';
+import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
+import 'package:ae_stagram_app/app/ui/android/login/login.dart';
+import 'package:ae_stagram_app/app/ui/android/navigation/navigation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 
-class Root extends GetView<RootController> {
-  const Root({Key? key}) : super(key: key);
-
+class Root extends GetWidget<AuthController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx(() {
-        switch (RouteName.values[controller.currentIndex.value]) {
-          case RouteName.Home:
-            return Home();
-          case RouteName.MyPage:
-            return MyPage();
+    return StreamBuilder(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return NavigationPage();
+        } else {
+          return Login();
         }
-      }),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: controller.currentIndex.value,
-          showSelectedLabels: true,
-          selectedItemColor: Colors.black,
-          onTap: controller.chnagePageIndex,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home_filled),
-              label: "홈",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              activeIcon: Icon(Icons.person),
-              label: "My",
-            ),
-          ],
-        ),
-      ),
+      },
     );
   }
 }
