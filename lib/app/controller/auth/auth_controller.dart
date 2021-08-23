@@ -7,26 +7,51 @@ class AuthController extends GetxController {
   late final GoogleSignIn _googleSignin;
   late final FirebaseAuth _auth;
   RxBool isLoading = false.obs;
+  Rx<User?> _firebaseUser = Rx<User?>(FirebaseAuth.instance.currentUser);
 
   void onInit() {
     super.onInit();
     _googleSignin = GoogleSignIn();
     _auth = FirebaseAuth.instance;
+    _firebaseUser.bindStream(_auth.authStateChanges());
   }
 
+  User? get user => _firebaseUser.value;
+
   Future googleSignIn() async {
-    isLoading.value = true;
-    GoogleSignInAccount? googleUser = await _googleSignin.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    try {
+      isLoading.value = true;
+      GoogleSignInAccount? googleUser = await _googleSignin.signIn();
+      GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
 
-    AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+      AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
 
-    User? user = (await _auth.signInWithCredential(credential)).user;
-    isLoading.value = false;
+      User? user = (await _auth.signInWithCredential(credential)).user;
+      isLoading.value = false;
 
-    return user;
+      return user;
+    } catch (error) {
+      Get.snackbar(
+        "Error Google signing in",
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      isLoading.value = false;
+    }
+  }
+
+  void signOut() async {
+    try {
+      _auth.signOut();
+    } catch (error) {
+      Get.snackbar(
+        "Error signing out",
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
   }
 }

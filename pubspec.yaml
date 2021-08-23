@@ -34,6 +34,7 @@ dependencies:
   flutter_signin_button: ^2.0.0
   firebase_core: ^1.5.0
   carousel_slider: ^4.0.0
+  readmore: ^2.1.0
 
 dev_dependencies:
   flutter_test:
