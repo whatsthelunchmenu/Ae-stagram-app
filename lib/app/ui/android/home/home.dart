@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
             'Aestagram',
             style: TextStyle(
               fontSize: 24,
-              color: Colors.blue,
+              color: Colors.black,
             ),
           ),
           elevation: 0.0,
@@ -29,16 +29,30 @@ class Home extends StatelessWidget {
           ),
           child: HomeDrawer(),
         ),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          color: mainColor,
-          child: ListView(
-            children: [
-              StoryCard(),
-              StoryCard(),
-              StoryCard(),
-            ],
-          ),
+        body: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.only(right: 30, left: 30),
+                color: mainColor,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    StoryCard(),
+                    StoryCard(),
+                    StoryCard(),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: mainColor,
+              ),
+            )
+          ],
         ),
       ),
     );

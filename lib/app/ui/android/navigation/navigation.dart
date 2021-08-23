@@ -1,6 +1,7 @@
 import 'package:ae_stagram_app/app/controller/root_controller.dart';
 import 'package:ae_stagram_app/app/ui/android/home/home.dart';
 import 'package:ae_stagram_app/app/ui/android/mypage/mypage.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -18,16 +19,18 @@ class NavigationPage extends GetView<RootController> {
       }),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
+          backgroundColor: mainColor,
           type: BottomNavigationBarType.fixed,
           currentIndex: controller.currentIndex.value,
           showSelectedLabels: true,
           selectedItemColor: Colors.black,
+          iconSize: 28,
           onTap: controller.chnagePageIndex,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               activeIcon: Icon(Icons.home_filled),
-              label: "홈",
+              label: "Home",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
