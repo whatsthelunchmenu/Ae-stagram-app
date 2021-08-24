@@ -14,13 +14,6 @@ class CardBottomTexts extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '좋아요 320개',
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
           ReadMoreText(
             'Junewoo Park 내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내',
             style: TextStyle(color: Colors.black),
@@ -37,7 +30,7 @@ class CardBottomTexts extends StatelessWidget {
             lessStyle: TextStyle(color: Colors.grey),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 5, bottom: 5),
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: InkWell(
               onTap: () {
                 Get.to(() => CommentDetail());
@@ -52,10 +45,7 @@ class CardBottomTexts extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 10,
-            ),
+            padding: const EdgeInsets.only(top: 5, bottom: 20),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

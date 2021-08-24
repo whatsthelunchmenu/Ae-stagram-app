@@ -35,7 +35,7 @@ class _StoryCardState extends State<StoryCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20, right: 10, left: 19),
+      margin: const EdgeInsets.only(bottom: 20, right: 10, left: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
@@ -92,6 +92,8 @@ class _StoryCardState extends State<StoryCard> {
                       height: 230.0,
                       onPageChanged: onChnagedIndex,
                       reverse: false,
+                      enlargeCenterPage: false,
+                      enableInfiniteScroll: false,
                     ),
                     itemCount: 3,
                     itemBuilder: (context, index, realIndex) {
@@ -143,17 +145,14 @@ class _StoryCardState extends State<StoryCard> {
                     size: 30,
                   ),
                   onTap: () {},
-                )
-                // IconButton(
-                //   icon: isLike
-                //       ? Icon(CupertinoIcons.heart_fill)
-                //       : Icon(CupertinoIcons.heart),
-                //   onPressed: () {
-                //     onLikeChnage();
-                //   },
-                //   padding: const EdgeInsets.all(4),
-                //   iconSize: 40,
-                // )
+                ),
+                Text(
+                  ' 320',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             CardBottomTexts(),
