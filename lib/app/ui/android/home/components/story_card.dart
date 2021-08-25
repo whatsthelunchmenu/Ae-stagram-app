@@ -1,3 +1,4 @@
+import 'package:ae_stagram_app/app/data/model/story_card_model.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/animated_button_icon.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_card_bottom_texts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -6,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class StoryCard extends StatefulWidget {
+  StoryCard({required this.story});
+  final StoryCardModel story;
+
   @override
   _StoryCardState createState() => _StoryCardState();
 }
@@ -63,7 +67,7 @@ class _StoryCardState extends State<StoryCard> {
                         ),
                       ),
                       Text(
-                        'Junewoo Park',
+                        widget.story.id,
                       ),
                     ],
                   ),
@@ -95,13 +99,13 @@ class _StoryCardState extends State<StoryCard> {
                       enlargeCenterPage: false,
                       enableInfiniteScroll: false,
                     ),
-                    itemCount: 3,
+                    itemCount: widget.story.images.length,
                     itemBuilder: (context, index, realIndex) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         color: Colors.blue,
                         child: Image.network(
-                          "https://carpeoplemarketing.com/wp-content/uploads/2018/09/WOW-Customer-1080x675.png",
+                          widget.story.images[index],
                           fit: BoxFit.cover,
                         ),
                       );
@@ -119,7 +123,7 @@ class _StoryCardState extends State<StoryCard> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        '${currentIndex + 1}/3',
+                        '${currentIndex + 1}/${widget.story.images.length}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
@@ -147,7 +151,7 @@ class _StoryCardState extends State<StoryCard> {
                   onTap: () {},
                 ),
                 Text(
-                  ' 320',
+                  " ${widget.story.likeCount}",
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -155,7 +159,9 @@ class _StoryCardState extends State<StoryCard> {
                 ),
               ],
             ),
-            CardBottomTexts(),
+            CardBottomTexts(
+              story: widget.story,
+            ),
           ],
         ),
       ),

@@ -1,9 +1,13 @@
+import 'package:ae_stagram_app/app/data/model/story_card_model.dart';
 import 'package:ae_stagram_app/app/ui/android/home/detail/comment_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:get/get.dart';
 
 class CardBottomTexts extends StatelessWidget {
+  final StoryCardModel story;
+  CardBottomTexts({required this.story});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +19,7 @@ class CardBottomTexts extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ReadMoreText(
-            'Junewoo Park 내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용용내용내용내',
+            '${story.id} ${story.content}',
             style: TextStyle(color: Colors.black),
             textAlign: TextAlign.start,
             colorClickableText: Colors.black,
@@ -36,7 +40,7 @@ class CardBottomTexts extends StatelessWidget {
                 Get.to(() => CommentDetail());
               },
               child: Text(
-                '댓글 350개 모두 보기',
+                '댓글 ${story.commentCount}개 모두 보기',
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.grey,
