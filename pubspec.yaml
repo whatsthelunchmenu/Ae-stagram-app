@@ -36,6 +36,8 @@ dependencies:
   carousel_slider: ^4.0.0
   readmore: ^2.1.0
   google_fonts: ^2.1.0
+  dio: ^4.0.0
+  logger: ^1.0.0
 
 dev_dependencies:
   flutter_test:
