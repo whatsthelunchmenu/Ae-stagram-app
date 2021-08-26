@@ -1,5 +1,5 @@
 import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
-import 'package:ae_stagram_app/app/controller/logger_controller.dart';
+import 'package:ae_stagram_app/app/controller/logger/logger_controller.dart';
 import 'package:ae_stagram_app/app/controller/root_controller.dart';
 import 'package:get/instance_manager.dart';
 

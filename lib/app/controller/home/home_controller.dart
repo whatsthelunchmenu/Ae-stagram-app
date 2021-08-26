@@ -26,4 +26,6 @@ class HomeController extends GetxController {
     final result = DummyStory().dummy.map((e) => StoryCardModel.fromJson(e));
     storyList.addAll(result);
   }
+
+  getTest() {}
 }

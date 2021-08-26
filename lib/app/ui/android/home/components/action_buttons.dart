@@ -1,4 +1,4 @@
-import 'package:ae_stagram_app/app/controller/logger_controller.dart';
+import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
 import 'package:ae_stagram_app/app/route/app_pages.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
@@ -88,7 +88,8 @@ class MyPageButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.toNamed(Routes.MYPAGE);
+          // Get.toNamed(Routes.MYPAGE);
+          AuthController.to.getTest();
         },
       ),
     );

@@ -1,3 +1,5 @@
+import 'package:ae_stagram_app/app/data/provider/base_client.dart';
+import 'package:ae_stagram_app/app/data/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -6,6 +8,7 @@ class AuthController extends GetxController {
   static AuthController get to => Get.find();
   late final GoogleSignIn _googleSignin;
   late final FirebaseAuth _auth;
+  late AuthReposiory client;
   RxBool isLoading = false.obs;
   Rx<User?> _firebaseUser = Rx<User?>(FirebaseAuth.instance.currentUser);
 
@@ -14,6 +17,7 @@ class AuthController extends GetxController {
     _googleSignin = GoogleSignIn();
     _auth = FirebaseAuth.instance;
     _firebaseUser.bindStream(_auth.authStateChanges());
+    client = AuthReposiory();
   }
 
   User? get user => _firebaseUser.value;
@@ -53,5 +57,9 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  Future getTest() async {
+    client.getTest();
   }
 }
