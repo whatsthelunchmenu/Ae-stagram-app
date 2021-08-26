@@ -6,7 +6,38 @@ class NewStory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('사진 선택'),
+            SizedBox(height: 10),
+            Container(
+              height: 100,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (context, index) {
+                  return VerticalDivider(
+                    width: 10,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 50,
+                    width: 50,
+                    color: Colors.red,
+                  );
+                },
+                itemCount: 10,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

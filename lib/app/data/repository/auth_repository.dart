@@ -15,11 +15,19 @@ class AuthReposiory {
 
   Future login() async {
     Map<String, dynamic> header = await BaseClient.getHeader();
-    try {
-      await _dio.post('/user/login', options: Options(headers: header));
-      LoggerController.to.logger.i("[Login] Login Sucess");
-    } catch (e) {
-      LoggerController.to.logger.e("[Login] Login fail : $e");
+    final response = await _dio.post(
+      '/user/login',
+      options: Options(
+        headers: header,
+        validateStatus: (status) {
+          return status! < 500;
+        },
+      ),
+    );
+    if (response.statusCode == 200) {
+      LoggerController.to.logger.i("[Login] Login Success");
+    } else {
+      LoggerController.to.logger.e("[Login] Login fail : $response");
     }
   }
 }

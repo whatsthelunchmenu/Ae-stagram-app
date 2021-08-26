@@ -63,7 +63,8 @@ class NewStoryButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.toNamed(Routes.NEWPAGE);
+          AuthController.to.login();
+          // Get.toNamed(Routes.NEWPAGE);
         },
       ),
     );
