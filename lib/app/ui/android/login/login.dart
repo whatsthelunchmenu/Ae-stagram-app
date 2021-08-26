@@ -30,7 +30,9 @@ class Login extends StatelessWidget {
             child: SignInButton(
               Buttons.Google,
               onPressed: () {
-                AuthController.to.googleSignIn().then((value) => null);
+                AuthController.to.googleSignIn().then(
+                      (value) => AuthController.to.login(),
+                    );
               },
             ),
           ),

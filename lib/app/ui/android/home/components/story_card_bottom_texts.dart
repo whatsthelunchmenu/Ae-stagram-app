@@ -1,5 +1,5 @@
 import 'package:ae_stagram_app/app/data/model/story_card_model.dart';
-import 'package:ae_stagram_app/app/ui/android/home/detail/comment_detail.dart';
+import 'package:ae_stagram_app/app/ui/android/detail/comment_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:get/get.dart';

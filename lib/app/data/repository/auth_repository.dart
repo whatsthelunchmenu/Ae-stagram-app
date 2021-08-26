@@ -1,3 +1,4 @@
+import 'package:ae_stagram_app/app/controller/controllers.dart';
 import 'package:ae_stagram_app/app/data/provider/base_client.dart';
 import 'package:dio/dio.dart';
 
@@ -12,9 +13,13 @@ class AuthReposiory {
     );
   }
 
-  Future getTest() async {
+  Future login() async {
     Map<String, dynamic> header = await BaseClient.getHeader();
-    final response = await _dio.get('/api', options: Options(headers: header));
-    print(response);
+    try {
+      await _dio.post('/user/login', options: Options(headers: header));
+      LoggerController.to.logger.i("[Login] Login Sucess");
+    } catch (e) {
+      LoggerController.to.logger.e("[Login] Login fail : $e");
+    }
   }
 }

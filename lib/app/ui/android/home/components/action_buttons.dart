@@ -44,22 +44,27 @@ class NewStoryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
-      child: Container(
-        margin: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            width: 1,
-            color: Colors.blueAccent.withOpacity(0.2),
+      child: InkWell(
+        child: Container(
+          margin: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              width: 1,
+              color: Colors.blueAccent.withOpacity(0.2),
+            ),
+            color: Colors.blue.withOpacity(0.4),
           ),
-          color: Colors.blue.withOpacity(0.4),
-        ),
-        child: Center(
-          child: Text(
-            'New Story',
-            style: actionButtonTextStyle,
+          child: Center(
+            child: Text(
+              'New Story',
+              style: actionButtonTextStyle,
+            ),
           ),
         ),
+        onTap: () {
+          Get.toNamed(Routes.NEWPAGE);
+        },
       ),
     );
   }
@@ -88,8 +93,7 @@ class MyPageButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          // Get.toNamed(Routes.MYPAGE);
-          AuthController.to.getTest();
+          Get.toNamed(Routes.MYPAGE);
         },
       ),
     );

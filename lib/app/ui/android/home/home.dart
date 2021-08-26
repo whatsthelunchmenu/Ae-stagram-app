@@ -2,9 +2,9 @@ import 'package:ae_stagram_app/app/controller/controllers.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/action_buttons.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/drawer.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_swipe.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -16,10 +16,7 @@ class Home extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'Aestagram',
-            style: GoogleFonts.indieFlower(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: appBarTitleTextStyle,
           ),
           elevation: 0.0,
         ),
