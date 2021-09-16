@@ -16,7 +16,7 @@ class AuthReposiory {
   Future login() async {
     Map<String, dynamic> header = await BaseClient.getHeader();
     final response = await _dio.post(
-      '/user/login',
+      '/users/login',
       options: Options(
         headers: header,
         validateStatus: (status) {

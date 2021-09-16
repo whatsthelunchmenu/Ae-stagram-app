@@ -1,4 +1,4 @@
-import 'package:ae_stagram_app/app/data/model/story_card_model.dart';
+import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/animated_button_icon.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_card_bottom_texts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -67,7 +67,7 @@ class _StoryCardState extends State<StoryCard> {
                         ),
                       ),
                       Text(
-                        widget.story.id,
+                        widget.story.displayName ?? "",
                       ),
                     ],
                   ),
@@ -99,13 +99,13 @@ class _StoryCardState extends State<StoryCard> {
                       enlargeCenterPage: false,
                       enableInfiniteScroll: false,
                     ),
-                    itemCount: widget.story.images.length,
+                    itemCount: widget.story.images?.length,
                     itemBuilder: (context, index, realIndex) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         color: Colors.blue,
                         child: Image.network(
-                          widget.story.images[index],
+                          widget.story.images?[index].imagePath ?? "",
                           fit: BoxFit.cover,
                         ),
                       );
@@ -123,7 +123,7 @@ class _StoryCardState extends State<StoryCard> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        '${currentIndex + 1}/${widget.story.images.length}',
+                        '${currentIndex + 1}/${widget.story.images?.length}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
@@ -151,7 +151,7 @@ class _StoryCardState extends State<StoryCard> {
                   onTap: () {},
                 ),
                 Text(
-                  " ${widget.story.likeCount}",
+                  " 1000",
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

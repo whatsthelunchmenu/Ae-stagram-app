@@ -1,9 +1,8 @@
-import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
+import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
 import 'package:ae_stagram_app/app/route/app_pages.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ActionButtons extends StatelessWidget {
   @override
@@ -63,7 +62,21 @@ class NewStoryButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          AuthController.to.login();
+          HomeController.to.createStory(
+            "반갑습니다",
+            [
+              {
+                "id": null,
+                "path":
+                    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y2hhbmdlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
+              },
+              {
+                "id": null,
+                "path":
+                    "https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+              }
+            ],
+          );
           // Get.toNamed(Routes.NEWPAGE);
         },
       ),
@@ -94,7 +107,9 @@ class MyPageButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.toNamed(Routes.MYPAGE);
+          // AuthController.to.login();
+          HomeController.to.getStory();
+          // Get.toNamed(Routes.MYPAGE);
         },
       ),
     );

@@ -13,7 +13,7 @@ class BaseClient {
 
   static Future<Map<String, dynamic>> getHeader() async {
     String token = await getToken();
-    LoggerController.to.logger.i("[Token] : $token");
+    LoggerController.to.logger.i("[getHeader] : getToken");
     return {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

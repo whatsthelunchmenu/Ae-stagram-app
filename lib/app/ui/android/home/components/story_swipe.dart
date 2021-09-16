@@ -13,20 +13,28 @@ class StorySwipe extends GetWidget<HomeController> {
       child: Container(
         padding: const EdgeInsets.only(right: 30, left: 30),
         color: mainColor,
-        child: CarouselSlider.builder(
-          carouselController: controller.carouselController,
-          options: CarouselOptions(
-            viewportFraction: 1,
-            height: Get.size.height * 0.55,
-            reverse: false,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: false,
-          ),
-          itemCount: controller.storyList.length,
-          itemBuilder: (context, index, realIndex) {
-            return Obx(() => StoryCard(story: controller.storyList[index]));
-          },
-        ),
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.storyList.length,
+            itemBuilder: (context, index) {
+              return Obx(() => StoryCard(
+                    story: controller.storyList[index],
+                  ));
+            }),
+        // child: CarouselSlider.builder(
+        //   carouselController: controller.carouselController,
+        //   options: CarouselOptions(
+        //     viewportFraction: 1,
+        //     height: Get.size.height * 0.55,
+        //     reverse: false,
+        //     enlargeCenterPage: true,
+        //     enableInfiniteScroll: false,
+        //   ),
+        //   itemCount: controller.storyList.length,
+        //   itemBuilder: (context, index, realIndex) {
+        //     return Obx(() => StoryCard(story: controller.storyList[index]));
+        //   },
+        // ),
       ),
     );
   }

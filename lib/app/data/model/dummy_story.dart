@@ -1,26 +1,35 @@
 class DummyStory {
-  List<Map<dynamic, dynamic>> dummy = [
-    {
-      "uid": "asd",
-      "id": "J.PARK",
-      "content": "안녕하십니까?",
-      "likeCount": 11,
-      "commentCount": 0,
-      "images": [
-        "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg",
-        "https://images.ctfassets.net/hrltx12pl8hq/3MbF54EhWUhsXunc5Keueb/60774fbbff86e6bf6776f1e17a8016b4/04-nature_721703848.jpg?fit=fill&w=480&h=270"
-      ],
-    },
-    {
-      "uid": "asd",
-      "id": "June woo Park",
-      "content": "안녕 반가워 난 나야",
-      "likeCount": 3021,
-      "commentCount": 0,
-      "images": [
-        "https://i.ytimg.com/vi/Iz_TSnDDInk/maxresdefault.jpg",
-        "https://images.ctfassets.net/hrltx12pl8hq/3MbF54EhWUhsXunc5Keueb/60774fbbff86e6bf6776f1e17a8016b4/04-nature_721703848.jpg?fit=fill&w=480&h=270"
-      ],
-    }
-  ];
+  Map<String, dynamic> dummy = {
+    "header": {"result": true, "message": "", "status": 200},
+    "body": [
+      {
+        "id": 1,
+        "display_name": "호돌맨",
+        "content": "본문 내용",
+        "images": [
+          {
+            "id": 1,
+            "imagePath":
+                "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+            "createdAt": "2021-09-15T16:39:24.886",
+            "updatedAt": "2021-09-15T16:39:24.886"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "display_name": "호돌맨",
+        "content": "본문 내용",
+        "images": [
+          {
+            "id": 1,
+            "imagePath":
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+            "createdAt": "2021-09-15T16:39:24.886",
+            "updatedAt": "2021-09-15T16:39:24.886"
+          }
+        ]
+      }
+    ]
+  };
 }

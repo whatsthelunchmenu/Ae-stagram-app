@@ -1,4 +1,4 @@
-import 'package:ae_stagram_app/app/data/model/story_card_model.dart';
+import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/ui/android/detail/comment_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
@@ -19,7 +19,7 @@ class CardBottomTexts extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ReadMoreText(
-            '${story.id} ${story.content}',
+            '${story.displayName} ${story.content}',
             style: TextStyle(color: Colors.black),
             textAlign: TextAlign.start,
             colorClickableText: Colors.black,
@@ -40,7 +40,7 @@ class CardBottomTexts extends StatelessWidget {
                 Get.to(() => CommentDetail());
               },
               child: Text(
-                '댓글 ${story.commentCount}개 모두 보기',
+                '댓글 10개 모두 보기',
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.grey,
