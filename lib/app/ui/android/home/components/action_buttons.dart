@@ -1,5 +1,4 @@
 import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
-import 'package:ae_stagram_app/app/route/app_pages.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
