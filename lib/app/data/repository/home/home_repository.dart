@@ -14,8 +14,7 @@ class HomeRepository {
     );
   }
 
-  Future<bool> createStory(
-      String content, List<Map<String, dynamic>> images) async {
+  Future<bool> createStory(String content, List<String> images) async {
     Map<String, dynamic> header = await BaseClient.getHeader();
     try {
       Response response = await _dio.post(

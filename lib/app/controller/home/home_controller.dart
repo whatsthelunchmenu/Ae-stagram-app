@@ -32,7 +32,7 @@ class HomeController extends GetxController {
     storyList.addAll(test);
   }
 
-  createStory(String content, List<Map<String, dynamic>> images) {
+  createStory(String content, List<String> images) {
     repository.createStory(content, images);
   }
 
