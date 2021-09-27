@@ -11,20 +11,28 @@ class StoryCardModel {
     this.displayName,
     this.content,
     this.images,
+    this.createdAt,
+    this.updatedAt,
   });
 
   int id;
   String? displayName;
   String? content;
-  List<StoryImages>? images;
+  List? images;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   factory StoryCardModel.fromJson(Map<String, dynamic> json) => StoryCardModel(
         id: json['id'],
         displayName: json['display_name'],
         content: json['content'],
-        images: json['images']
-            .map<StoryImages>((e) => StoryImages.fromJson(e))
-            .toList(),
+        images: json['images'],
+        // createdAt: json["createdAt"] != Null
+        //     ? DateTime.parse(json["createdAt"])
+        //     : DateTime.now(),
+        // updatedAt: json["updatedAt"] != Null
+        //     ? DateTime.parse(json["updatedAt"])
+        //     : DateTime.now(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -32,32 +40,6 @@ class StoryCardModel {
         "displayName": displayName,
         "content": content,
         "images": images,
-      };
-}
-
-class StoryImages {
-  StoryImages({
-    required this.id,
-    this.imagePath,
-    this.createdAt,
-    this.updatedAt,
-  });
-
-  int id;
-  String? imagePath;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-
-  factory StoryImages.fromJson(Map<String, dynamic> json) => StoryImages(
-        id: json["id"],
-        imagePath: json["imagePath"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "imagePath": imagePath,
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),
       };

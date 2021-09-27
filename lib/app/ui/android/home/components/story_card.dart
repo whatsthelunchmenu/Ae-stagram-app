@@ -105,7 +105,7 @@ class _StoryCardState extends State<StoryCard> {
                         width: MediaQuery.of(context).size.width,
                         color: Colors.blue,
                         child: Image.network(
-                          widget.story.images?[index].imagePath ?? "",
+                          widget.story.images?[index] ?? "",
                           fit: BoxFit.cover,
                         ),
                       );
