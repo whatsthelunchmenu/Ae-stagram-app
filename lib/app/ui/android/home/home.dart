@@ -2,6 +2,7 @@ import 'package:ae_stagram_app/app/controller/controllers.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/action_buttons.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/drawer.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_swipe.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

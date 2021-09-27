@@ -42,6 +42,7 @@ class HomeController extends GetxController {
         .map<StoryCardModel>((e) => StoryCardModel.fromJson(e))
         .toList();
     storyList.addAll(response);
+    update();
   }
 
   void addEvent() {}

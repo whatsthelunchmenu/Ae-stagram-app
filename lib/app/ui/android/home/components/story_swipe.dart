@@ -7,19 +7,21 @@ import 'package:get/get.dart';
 class StorySwipe extends GetWidget<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: Container(
-        padding: const EdgeInsets.only(right: 30, left: 30),
-        color: mainColor,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: controller.storyList.length,
-            itemBuilder: (context, index) {
-              return Obx(() => StoryCard(
-                    story: controller.storyList[index],
-                  ));
-            }),
+    return Obx(
+      () => Expanded(
+        flex: 2,
+        child: Container(
+          padding: const EdgeInsets.only(right: 30, left: 30),
+          color: mainColor,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: controller.storyList.length,
+              itemBuilder: (context, index) {
+                return StoryCard(
+                  story: controller.storyList[index],
+                );
+              }),
+        ),
       ),
     );
   }

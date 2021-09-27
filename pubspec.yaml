@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^2.1.0
   dio: ^4.0.0
   logger: ^1.0.0
+  image_picker: ^0.8.4+2
+  dotted_decoration: ^2.0.0
 
 dev_dependencies:
   flutter_test:
