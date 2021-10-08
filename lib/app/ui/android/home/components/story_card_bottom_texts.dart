@@ -1,12 +1,12 @@
-import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
+import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
 import 'package:ae_stagram_app/app/ui/android/detail/comment_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:get/get.dart';
 
 class CardBottomTexts extends StatelessWidget {
-  final StoryCardModel story;
-  CardBottomTexts({required this.story});
+  final FeedInfo feed;
+  CardBottomTexts({required this.feed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CardBottomTexts extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ReadMoreText(
-            '${story.displayName} ${story.content}',
+            '${feed.displayName} ${feed.content}',
             style: TextStyle(color: Colors.black),
             textAlign: TextAlign.start,
             colorClickableText: Colors.black,

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'feed_info.dart';
+
 StoryCardModel storyCardModelFromJson(String str) =>
     StoryCardModel.fromJson(json.decode(str));
 
@@ -7,40 +9,27 @@ String storyCardModelToJson(StoryCardModel data) => json.encode(data.toJson());
 
 class StoryCardModel {
   StoryCardModel({
-    required this.id,
-    this.displayName,
-    this.content,
-    this.images,
-    this.createdAt,
-    this.updatedAt,
+    this.hasNextToken = "",
+    this.maxResults = 0,
+    this.feedInfos = const [],
   });
-
-  int id;
-  String? displayName;
-  String? content;
-  List? images;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  String hasNextToken;
+  int maxResults;
+  List<FeedInfo> feedInfos;
 
   factory StoryCardModel.fromJson(Map<String, dynamic> json) => StoryCardModel(
-        id: json['id'],
-        displayName: json['display_name'],
-        content: json['content'],
-        images: json['images'],
-        // createdAt: json["createdAt"] != Null
-        //     ? DateTime.parse(json["createdAt"])
-        //     : DateTime.now(),
-        // updatedAt: json["updatedAt"] != Null
-        //     ? DateTime.parse(json["updatedAt"])
-        //     : DateTime.now(),
+        hasNextToken: json['hasNextToken'],
+        maxResults: json['maxResults'],
+        feedInfos: List<FeedInfo>.from(
+          json['feedInfos'].map(
+            (data) => FeedInfo.fromJson(data),
+          ),
+        ),
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "displayName": displayName,
-        "content": content,
-        "images": images,
-        "createdAt": createdAt!.toIso8601String(),
-        "updatedAt": updatedAt!.toIso8601String(),
+        "hasNextToken": hasNextToken,
+        "maxResults": maxResults,
+        "feedInfos": feedInfos,
       };
 }

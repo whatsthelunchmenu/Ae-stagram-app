@@ -1,3 +1,4 @@
+import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
 import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/animated_button_icon.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_card_bottom_texts.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class StoryCard extends StatefulWidget {
-  StoryCard({required this.story});
-  final StoryCardModel story;
+  StoryCard({required this.feed});
+  final FeedInfo feed;
 
   @override
   _StoryCardState createState() => _StoryCardState();
@@ -67,7 +68,7 @@ class _StoryCardState extends State<StoryCard> {
                         ),
                       ),
                       Text(
-                        widget.story.displayName ?? "",
+                        widget.feed.displayName,
                       ),
                     ],
                   ),
@@ -99,13 +100,13 @@ class _StoryCardState extends State<StoryCard> {
                       enlargeCenterPage: false,
                       enableInfiniteScroll: false,
                     ),
-                    itemCount: widget.story.images?.length,
+                    itemCount: widget.feed.images?.length,
                     itemBuilder: (context, index, realIndex) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         color: Colors.blue,
                         child: Image.network(
-                          widget.story.images?[index] ?? "",
+                          widget.feed.images?[index] ?? "",
                           fit: BoxFit.cover,
                         ),
                       );
@@ -123,7 +124,7 @@ class _StoryCardState extends State<StoryCard> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        '${currentIndex + 1}/${widget.story.images?.length}',
+                        '${currentIndex + 1}/${widget.feed.images?.length}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
@@ -160,7 +161,7 @@ class _StoryCardState extends State<StoryCard> {
               ],
             ),
             CardBottomTexts(
-              story: widget.story,
+              feed: widget.feed,
             ),
           ],
         ),

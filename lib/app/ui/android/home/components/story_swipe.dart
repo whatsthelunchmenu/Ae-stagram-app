@@ -14,11 +14,12 @@ class StorySwipe extends GetWidget<HomeController> {
           padding: const EdgeInsets.only(right: 30, left: 30),
           color: mainColor,
           child: ListView.builder(
+              controller: controller.scrollController,
               scrollDirection: Axis.horizontal,
-              itemCount: controller.storyList.length,
+              itemCount: controller.storyCardResult.value.feedInfos.length,
               itemBuilder: (context, index) {
                 return StoryCard(
-                  story: controller.storyList[index],
+                  feed: controller.storyCardResult.value.feedInfos[index],
                 );
               }),
         ),

@@ -1,22 +1,25 @@
 import 'package:ae_stagram_app/app/data/model/dummy_story.dart';
+import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
 import 'package:ae_stagram_app/app/data/model/response_model.dart';
 import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/data/repository/home/home_repository.dart';
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
-  late CarouselController carouselController;
+  late ScrollController scrollController;
   late HomeRepository repository;
-  RxList<StoryCardModel> storyList = <StoryCardModel>[].obs;
+  Rx<StoryCardModel> storyCardResult = StoryCardModel(feedInfos: []).obs;
 
   @override
   void onInit() {
     super.onInit();
-    carouselController = CarouselController();
+    scrollController = ScrollController();
     repository = HomeRepository();
     getStory();
+    addEvent();
   }
 
   @override
@@ -24,26 +27,29 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  dummyLoad() {
-    final result = ResponseModel.fromJson(DummyStory().dummy);
-    final List<StoryCardModel> test = result.body
-        .map<StoryCardModel>((e) => StoryCardModel.fromJson(e))
-        .toList();
-    storyList.addAll(test);
-  }
-
   createStory(String content, List<String> images) {
     repository.createStory(content, images);
   }
 
   getStory() async {
-    final result = await repository.getStory();
-    final List<StoryCardModel> response = result.body
-        .map<StoryCardModel>((e) => StoryCardModel.fromJson(e))
-        .toList();
-    storyList.addAll(response);
-    update();
+    StoryCardModel? result =
+        await repository.getStory(storyCardResult.value.hasNextToken);
+
+    if (result != null && result.feedInfos.length > 0) {
+      storyCardResult.update((storyCard) {
+        storyCard!.hasNextToken = result.hasNextToken;
+        storyCard.feedInfos.addAll(result.feedInfos);
+      });
+    }
   }
 
-  void addEvent() {}
+  void addEvent() {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+              scrollController.position.maxScrollExtent &&
+          storyCardResult.value.hasNextToken.isNotEmpty) {
+        getStory();
+      }
+    });
+  }
 }
