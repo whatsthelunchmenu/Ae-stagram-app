@@ -20,7 +20,7 @@ class ActionButtons extends StatelessWidget {
               child: Column(
                 children: [
                   NewStoryButton(),
-                  RefreshButton(),
+                  BabyIcon(),
                 ],
               ),
             ),
@@ -93,34 +93,37 @@ class MyPageButton extends StatelessWidget {
           ),
         ),
         onTap: () {
-          // AuthController.to.login();
           HomeController.to.getStory();
-          // Get.toNamed(Routes.MYPAGE);
         },
       ),
     );
   }
 }
 
-class RefreshButton extends StatelessWidget {
+class BabyIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 2,
       child: Container(
         margin: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            width: 1,
-            color: Colors.blueAccent.withOpacity(0.2),
-          ),
-          color: Colors.blue.withOpacity(0.4),
-        ),
         child: Center(
-          child: Text(
-            'Refresh',
-            style: actionButtonTextStyle,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 70,
+                height: 70,
+                child: Image.asset(
+                  "assets/images/baby.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Text(
+                'Aestagram',
+                style: mainIconTextStyle,
+              )
+            ],
           ),
         ),
       ),

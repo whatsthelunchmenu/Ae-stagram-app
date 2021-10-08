@@ -1,3 +1,4 @@
+import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +11,12 @@ final TextStyle actionButtonTextStyle = GoogleFonts.indieFlower(
 final TextStyle appBarTitleTextStyle = GoogleFonts.indieFlower(
   fontSize: 24,
   fontWeight: FontWeight.bold,
+);
+
+final TextStyle mainIconTextStyle = GoogleFonts.indieFlower(
+  fontSize: 32,
+  fontWeight: FontWeight.bold,
+  color: Colors.white,
 );
 
 final TextStyle myPageBoxTitleTextStyle = GoogleFonts.indieFlower(

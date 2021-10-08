@@ -1,9 +1,6 @@
-import 'package:ae_stagram_app/app/data/model/dummy_story.dart';
-import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
-import 'package:ae_stagram_app/app/data/model/response_model.dart';
+import 'package:ae_stagram_app/app/controller/logger/logger_controller.dart';
 import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/data/repository/home/home_repository.dart';
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,6 +37,7 @@ class HomeController extends GetxController {
         storyCard!.hasNextToken = result.hasNextToken;
         storyCard.feedInfos.addAll(result.feedInfos);
       });
+      storyCardResult.refresh();
     }
   }
 
@@ -49,7 +47,19 @@ class HomeController extends GetxController {
               scrollController.position.maxScrollExtent &&
           storyCardResult.value.hasNextToken.isNotEmpty) {
         getStory();
+      } else if (scrollController.position.pixels ==
+          scrollController.position.minScrollExtent) {
+        refresh();
       }
     });
+  }
+
+  refresh() async {
+    StoryCardModel? result = await repository.getStory("");
+    storyCardResult.update((storyCard) {
+      storyCard = result;
+    });
+    storyCardResult.refresh();
+    LoggerController.to.logger.i("[refresh]List Refreshed");
   }
 }

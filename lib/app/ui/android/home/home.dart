@@ -14,12 +14,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: mainColor,
         appBar: AppBar(
-          title: Text(
-            'Aestagram',
-            style: appBarTitleTextStyle,
-          ),
           elevation: 0.0,
+          backgroundColor: mainColor,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
         ),
         drawer: ClipRRect(
           borderRadius: BorderRadius.only(
@@ -28,11 +29,14 @@ class Home extends StatelessWidget {
           ),
           child: HomeDrawer(),
         ),
-        body: Column(
-          children: [
-            StorySwipe(),
-            ActionButtons(),
-          ],
+        body: Container(
+          padding: const EdgeInsets.only(top: 10),
+          child: Column(
+            children: [
+              StorySwipe(),
+              ActionButtons(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
-import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/animated_button_icon.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_card_bottom_texts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -74,11 +73,17 @@ class _StoryCardState extends State<StoryCard> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
-                    child: InkWell(
-                      child: Icon(Icons.more_vert),
-                      onTap: () {},
+                    child: PopupMenuButton(
+                      itemBuilder: (context) {
+                        return {'수정', '삭제'}.map((String choice) {
+                          return PopupMenuItem<String>(
+                            value: choice,
+                            child: Text(choice),
+                          );
+                        }).toList();
+                      },
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

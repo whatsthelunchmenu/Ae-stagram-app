@@ -32,6 +32,9 @@ class _NewStoryState extends State<NewStory> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
