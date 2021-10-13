@@ -25,7 +25,7 @@ class CardBottomTexts extends StatelessWidget {
             colorClickableText: Colors.black,
             trimCollapsedText: '펼치기',
             trimExpandedText: '접기',
-            trimLines: 2,
+            trimLines: 3,
             trimMode: TrimMode.Length,
             trimLength: 50,
             moreStyle: TextStyle(

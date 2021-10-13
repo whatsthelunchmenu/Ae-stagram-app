@@ -9,8 +9,9 @@ final TextStyle actionButtonTextStyle = GoogleFonts.indieFlower(
 );
 
 final TextStyle appBarTitleTextStyle = GoogleFonts.indieFlower(
-  fontSize: 24,
+  fontSize: 30,
   fontWeight: FontWeight.bold,
+  color: Colors.black,
 );
 
 final TextStyle mainIconTextStyle = GoogleFonts.indieFlower(

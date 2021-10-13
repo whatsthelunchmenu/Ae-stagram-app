@@ -17,6 +17,7 @@ class Home extends StatelessWidget {
         backgroundColor: mainColor,
         appBar: AppBar(
           elevation: 0.0,
+          title: Text("Aestagram", style: appBarTitleTextStyle),
           backgroundColor: mainColor,
           iconTheme: IconThemeData(
             color: Colors.black,
@@ -34,7 +35,7 @@ class Home extends StatelessWidget {
           child: Column(
             children: [
               StorySwipe(),
-              ActionButtons(),
+              // ActionButtons(),
             ],
           ),
         ),
