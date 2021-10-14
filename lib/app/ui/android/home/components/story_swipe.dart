@@ -9,23 +9,28 @@ import 'package:get/get.dart';
 class StorySwipe extends GetWidget<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: Get.size.height * 0.8,
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        color: mainColor,
-        child: Obx(
-          () => controller.storyCardResult.value.feedInfos.length != 0
-              ? ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  controller: controller.scrollController,
-                  scrollDirection: Axis.vertical,
-                  itemCount: controller.storyCardResult.value.feedInfos.length,
-                  itemBuilder: (context, index) {
-                    return StoryCard(
-                      feed: controller.storyCardResult.value.feedInfos[index],
-                    );
-                  })
-              : StoryCardEmpty(),
-        ));
+    return Expanded(
+      child: Container(
+          padding: const EdgeInsets.only(
+            left: 5,
+            right: 5,
+          ),
+          color: mainColor,
+          child: Obx(
+            () => controller.storyCardResult.value.feedInfos.length != 0
+                ? ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    controller: controller.scrollController,
+                    scrollDirection: Axis.vertical,
+                    itemCount:
+                        controller.storyCardResult.value.feedInfos.length,
+                    itemBuilder: (context, index) {
+                      return StoryCard(
+                        feed: controller.storyCardResult.value.feedInfos[index],
+                      );
+                    })
+                : StoryCardEmpty(),
+          )),
+    );
   }
 }

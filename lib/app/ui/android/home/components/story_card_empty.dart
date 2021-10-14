@@ -8,12 +8,16 @@ class StoryCardEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20, right: 10, left: 10),
+      margin: const EdgeInsets.only(
+        bottom: 10,
+        right: 10,
+        left: 10,
+      ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
-      width: Get.size.width * 0.85,
+      width: double.infinity,
       child: SingleChildScrollView(
         child: Column(
           children: [
