@@ -54,7 +54,7 @@ class HomeController extends GetxController {
     });
   }
 
-  refresh() async {
+  Future<void> refresh() async {
     StoryCardModel? result = await repository.getStory("");
     storyCardResult.update((storyCard) {
       storyCard = result;

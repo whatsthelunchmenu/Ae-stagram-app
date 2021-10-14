@@ -18,17 +18,21 @@ class StorySwipe extends GetWidget<HomeController> {
           color: mainColor,
           child: Obx(
             () => controller.storyCardResult.value.feedInfos.length != 0
-                ? ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    controller: controller.scrollController,
-                    scrollDirection: Axis.vertical,
-                    itemCount:
-                        controller.storyCardResult.value.feedInfos.length,
-                    itemBuilder: (context, index) {
-                      return StoryCard(
-                        feed: controller.storyCardResult.value.feedInfos[index],
-                      );
-                    })
+                ? RefreshIndicator(
+                    onRefresh: controller.refresh,
+                    child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        controller: controller.scrollController,
+                        scrollDirection: Axis.vertical,
+                        itemCount:
+                            controller.storyCardResult.value.feedInfos.length,
+                        itemBuilder: (context, index) {
+                          return StoryCard(
+                            feed: controller
+                                .storyCardResult.value.feedInfos[index],
+                          );
+                        }),
+                  )
                 : StoryCardEmpty(),
           )),
     );
