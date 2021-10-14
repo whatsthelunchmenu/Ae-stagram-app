@@ -49,7 +49,7 @@ class HomeController extends GetxController {
         getStory();
       } else if (scrollController.position.pixels ==
           scrollController.position.minScrollExtent) {
-        refresh();
+        // refresh();
       }
     });
   }

@@ -5,6 +5,7 @@ import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -164,7 +165,7 @@ class _NewStoryState extends State<NewStory> {
                 ),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.11),
+            SizedBox(height: Get.size.height * 0.06),
             Container(
               margin: const EdgeInsets.only(bottom: 15),
               height: 80,
