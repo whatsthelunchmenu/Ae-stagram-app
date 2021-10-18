@@ -58,8 +58,8 @@ class NavigationPage extends GetView<RootController> {
           ),
           screenTransitionAnimation: ScreenTransitionAnimation(
             animateTabTransition: true,
-            curve: Curves.ease,
-            duration: Duration(milliseconds: 200),
+            curve: Curves.easeOutExpo,
+            duration: Duration(milliseconds: 900),
           ),
           navBarStyle: NavBarStyle
               .style15, // Choose the nav bar style with this property.
