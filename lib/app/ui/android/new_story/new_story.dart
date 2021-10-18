@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:ae_stagram_app/app/ui/android/new_story/upload_image_picker.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
@@ -26,6 +27,18 @@ class _NewStoryState extends State<NewStory> {
     super.initState();
   }
 
+  Future _pickPhotoImage() async {
+    _pickedImages.clear();
+    await _picker.pickMultiImage().then((value) {
+      if (_pickedImages.length > 5) {
+        _pickedImages = value!.map((e) => File(e.path)).toList().sublist(0, 5);
+      } else {
+        _pickedImages = value!.map((e) => File(e.path)).toList();
+      }
+    });
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,75 +56,7 @@ class _NewStoryState extends State<NewStory> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            ElevatedButton(
-              onPressed: () async {
-                _pickedImages.clear();
-                await _picker.pickMultiImage().then((value) {
-                  if (_pickedImages.length > 5) {
-                    _pickedImages =
-                        value!.map((e) => File(e.path)).toList().sublist(0, 5);
-                  } else {
-                    _pickedImages = value!.map((e) => File(e.path)).toList();
-                  }
-                });
-                setState(() {});
-              },
-              child: Text(
-                "Select Photo",
-                style: appBarTitleTextStyle,
-              ),
-            ),
-            SizedBox(height: 10),
-            Container(
-              height: 150,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) {
-                  return VerticalDivider(
-                    width: 10,
-                  );
-                },
-                itemBuilder: (context, index) {
-                  if (_pickedImages.length > index) {
-                    return Container(
-                      width: 150,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child:
-                            Image.file(_pickedImages[index], fit: BoxFit.cover),
-                      ),
-                    );
-                  }
-                  return Container(
-                      width: 150,
-                      decoration: DottedDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black,
-                        shape: Shape.box,
-                        linePosition: LinePosition.top,
-                        strokeWidth: 3,
-                      ),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          size: 40,
-                        ),
-                        onPressed: () async {
-                          await _picker
-                              .pickImage(source: ImageSource.gallery)
-                              .then(
-                            (value) {
-                              setState(() {
-                                _pickedImages.add(File(value!.path));
-                              });
-                            },
-                          );
-                        },
-                      ));
-                },
-                itemCount: 5,
-              ),
-            ),
+            UploadImagePicker(),
             SizedBox(height: 20),
             Text(
               "Content",

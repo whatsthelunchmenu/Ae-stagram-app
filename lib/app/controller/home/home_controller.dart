@@ -47,9 +47,6 @@ class HomeController extends GetxController {
               scrollController.position.maxScrollExtent &&
           storyCardResult.value.hasNextToken.isNotEmpty) {
         getStory();
-      } else if (scrollController.position.pixels ==
-          scrollController.position.minScrollExtent) {
-        // refresh();
       }
     });
   }
