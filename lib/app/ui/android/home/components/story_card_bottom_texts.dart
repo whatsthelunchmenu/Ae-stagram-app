@@ -40,6 +40,7 @@ class CardBottomTexts extends StatelessWidget {
               onTap: () {
                 Get.to(() => CommentDetail());
               },
+              // TODO : 댓글 여부에 따라서 분기
               child: InkWell(
                 child: Text(
                   '댓글 10개 모두 보기',
