@@ -1,4 +1,5 @@
 import 'package:ae_stagram_app/app/root.dart';
+import 'package:ae_stagram_app/app/ui/android/detail/comment_detail.dart';
 import 'package:ae_stagram_app/app/ui/android/mypage/mypage.dart';
 import 'package:ae_stagram_app/app/ui/android/new_story/new_story.dart';
 import 'package:get/route_manager.dart';
@@ -18,6 +19,11 @@ class AppPages {
     GetPage(
       name: Routes.NEWPAGE,
       page: () => NewStory(),
+      transition: Transition.fade,
+    ),
+    GetPage(
+      name: Routes.COMMENT_DETAIL,
+      page: () => CommentDetail(),
       transition: Transition.fade,
     )
   ];

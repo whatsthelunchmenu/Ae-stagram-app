@@ -6,35 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class StoryCard extends StatefulWidget {
+class StoryCard extends StatelessWidget {
   StoryCard({required this.feed});
   final FeedInfo feed;
-
-  @override
-  _StoryCardState createState() => _StoryCardState();
-}
-
-class _StoryCardState extends State<StoryCard> {
-  int currentIndex = 0;
-  late ScrollController scrollController;
-
-  @override
-  void initState() {
-    super.initState();
-    scrollController = ScrollController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    scrollController.dispose();
-  }
-
-  onChnagedIndex(index, reason) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,128 +24,184 @@ class _StoryCardState extends State<StoryCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          top: 10,
-                          right: 10,
-                          bottom: 10,
-                        ),
-                        child: CircleAvatar(
-                          radius: 15,
-                        ),
-                      ),
-                      Text(
-                        widget.feed.displayName,
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: PopupMenuButton(
-                      itemBuilder: (context) {
-                        return {'수정', '삭제'}.map((String choice) {
-                          return PopupMenuItem<String>(
-                            value: choice,
-                            child: Text(choice),
-                          );
-                        }).toList();
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 1,
-              child: Divider(
-                thickness: 0.5,
-              ),
-            ),
-            Container(
-              child: Stack(
-                children: [
-                  CarouselSlider.builder(
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                      height: 230.0,
-                      onPageChanged: onChnagedIndex,
-                      reverse: false,
-                      enlargeCenterPage: false,
-                      enableInfiniteScroll: false,
-                    ),
-                    itemCount: widget.feed.images?.length,
-                    itemBuilder: (context, index, realIndex) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        color: Colors.blue,
-                        child: Image.network(
-                          widget.feed.images?[index] ?? "",
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    },
-                  ),
-                  Positioned(
-                    top: 5,
-                    right: MediaQuery.of(context).size.width * 0.02,
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 40,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.4),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        '${currentIndex + 1}/${widget.feed.images?.length}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                AnimationIconButton(
-                  padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                  selectedIcon: Icon(
-                    CupertinoIcons.heart_fill,
-                    size: 30,
-                    color: Colors.redAccent,
-                  ),
-                  unSelectedIcon: Icon(
-                    CupertinoIcons.heart,
-                    size: 30,
-                  ),
-                  onTap: () {},
-                ),
-                Text(
-                  " 1000",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            CardBottomTexts(
-              feed: widget.feed,
-            ),
+            Top(displayName: feed.displayName),
+            Mid(images: feed.images),
+            Bottom(feed: feed),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Top extends StatelessWidget {
+  const Top({
+    Key? key,
+    required this.displayName,
+  }) : super(key: key);
+
+  final String displayName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 15,
+                      top: 10,
+                      right: 10,
+                      bottom: 10,
+                    ),
+                    child: CircleAvatar(
+                      radius: 15,
+                    ),
+                  ),
+                  Text(
+                    displayName,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: PopupMenuButton(
+                  itemBuilder: (context) {
+                    return {'수정', '삭제'}.map((String choice) {
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice),
+                      );
+                    }).toList();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Mid extends StatefulWidget {
+  const Mid({
+    Key? key,
+    this.images,
+  }) : super(key: key);
+
+  final List<String>? images;
+
+  @override
+  State<Mid> createState() => _MidState();
+}
+
+class _MidState extends State<Mid> {
+  int currentIndex = 0;
+  onChnagedIndex(index, reason) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          CarouselSlider.builder(
+            options: CarouselOptions(
+              viewportFraction: 1,
+              height: 230.0,
+              onPageChanged: onChnagedIndex,
+              reverse: false,
+              enlargeCenterPage: false,
+              enableInfiniteScroll: false,
+            ),
+            itemCount: widget.images?.length ?? 0,
+            itemBuilder: (context, index, realIndex) {
+              return Container(
+                width: MediaQuery.of(context).size.width,
+                color: Colors.blue,
+                child: Image.network(
+                  widget.images?[index] ?? "",
+                  fit: BoxFit.cover,
+                ),
+              );
+            },
+          ),
+          Positioned(
+            top: 5,
+            right: MediaQuery.of(context).size.width * 0.02,
+            child: Container(
+              alignment: Alignment.center,
+              width: 40,
+              height: 20,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                '${currentIndex + 1}/${widget.images?.length}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Bottom extends StatelessWidget {
+  const Bottom({
+    Key? key,
+    required this.feed,
+  }) : super(key: key);
+
+  final FeedInfo feed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              AnimationIconButton(
+                padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                selectedIcon: Icon(
+                  CupertinoIcons.heart_fill,
+                  size: 30,
+                  color: Colors.redAccent,
+                ),
+                unSelectedIcon: Icon(
+                  CupertinoIcons.heart,
+                  size: 30,
+                ),
+                onTap: () {},
+              ),
+              Text(
+                " 1000",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          CardBottomTexts(feed: feed),
+        ],
       ),
     );
   }

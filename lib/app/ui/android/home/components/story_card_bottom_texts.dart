@@ -1,4 +1,5 @@
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
+import 'package:ae_stagram_app/app/route/app_pages.dart';
 import 'package:ae_stagram_app/app/ui/android/detail/comment_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
@@ -39,12 +40,20 @@ class CardBottomTexts extends StatelessWidget {
               onTap: () {
                 Get.to(() => CommentDetail());
               },
-              child: Text(
-                '댓글 10개 모두 보기',
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.grey,
+              child: InkWell(
+                child: Text(
+                  '댓글 10개 모두 보기',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey,
+                  ),
                 ),
+                onTap: () {
+                  Get.toNamed(
+                    Routes.COMMENT_DETAIL,
+                    arguments: feed,
+                  );
+                },
               ),
             ),
           ),
