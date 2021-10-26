@@ -6,28 +6,27 @@ class AuthReposiory {
   late Dio _dio;
 
   AuthReposiory() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: "http://34.64.148.156:8080",
-      ),
-    );
+    _dio = Dio(BaseClient.baseOptions);
   }
 
   Future login() async {
-    Map<String, dynamic> header = await BaseClient.getHeader();
-    final response = await _dio.post(
-      '/users/login',
-      options: Options(
-        headers: header,
-        validateStatus: (status) {
-          return status! < 500;
-        },
-      ),
+    await BaseClient.getHeader().then(
+      (value) async {
+        final response = await _dio.post(
+          '/users/login',
+          options: Options(
+            headers: value,
+            validateStatus: (status) {
+              return status! < 500;
+            },
+          ),
+        );
+        if (response.statusCode == 200) {
+          LoggerController.to.logger.i("[Login] Login Success");
+        } else {
+          LoggerController.to.logger.e("[Login] Login fail : $response");
+        }
+      },
     );
-    if (response.statusCode == 200) {
-      LoggerController.to.logger.i("[Login] Login Success");
-    } else {
-      LoggerController.to.logger.e("[Login] Login fail : $response");
-    }
   }
 }

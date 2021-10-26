@@ -8,7 +8,6 @@ class NewStoryController extends GetxController {
   static NewStoryController get to => Get.find();
   late ImagePicker _picker;
   late TextEditingController textEditingController;
-  RxInt _fixedPage = 5.obs;
   RxList<File> _pickedImages = <File>[].obs;
 
   @override
@@ -25,7 +24,6 @@ class NewStoryController extends GetxController {
   }
 
   List<File> get pickedImages => _pickedImages;
-  int get fixedPage => _fixedPage.value;
 
   Future pickMultipleImages() async {
     _pickedImages.clear();

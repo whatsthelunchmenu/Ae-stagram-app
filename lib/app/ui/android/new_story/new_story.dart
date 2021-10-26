@@ -32,24 +32,29 @@ class NewStory extends StatelessWidget {
             SizedBox(height: 20),
             ContentWriteBoard(),
             SizedBox(height: Get.size.height * 0.06),
-            Container(
-              margin: const EdgeInsets.only(bottom: 15),
-              height: 80,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: mainColor,
-              ),
-              child: Center(
-                child: Text(
-                  "Create new story",
-                  style: GoogleFonts.indieFlower(
-                    color: Colors.black,
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold,
+            InkWell(
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 15),
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: mainColor,
+                ),
+                child: Center(
+                  child: Text(
+                    "Create new story",
+                    style: GoogleFonts.indieFlower(
+                      color: Colors.black,
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
+              onTap: () {
+                print(NewStoryController.to.pickedImages);
+              },
             ),
           ],
         ),

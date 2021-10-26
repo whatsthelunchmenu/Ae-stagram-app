@@ -46,7 +46,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void signOut() async {
+  Future googleSignOut() async {
     try {
       _auth.signOut();
     } catch (error) {

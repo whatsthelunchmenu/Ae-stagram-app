@@ -1,7 +1,13 @@
 import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
 import 'package:ae_stagram_app/app/controller/logger/logger_controller.dart';
+import 'package:dio/dio.dart';
 
 class BaseClient {
+  static BaseOptions baseOptions = BaseOptions(
+    baseUrl:
+        "http://ec2-13-125-180-18.ap-northeast-2.compute.amazonaws.com:8080",
+  );
+
   static Future<String> getToken() async {
     final user = AuthController.to.user;
     if (user != null) {

@@ -24,8 +24,8 @@ class HomeDrawer extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {
-              print(AuthController.to.user?.uid);
+            onPressed: () async {
+              await AuthController.to.googleSignOut();
             },
             child: Text('LogOut'),
           ),

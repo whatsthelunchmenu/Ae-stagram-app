@@ -9,7 +9,7 @@ class StoryCardEmpty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        bottom: 10,
+        bottom: 20,
         right: 10,
         left: 10,
       ),
