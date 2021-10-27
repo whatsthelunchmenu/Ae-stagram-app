@@ -72,6 +72,7 @@ class Top extends StatelessWidget {
                   ),
                 ],
               ),
+              // TODO : UID 비교로 변경해야 함
               AuthController.to.user?.displayName == feed.displayName
                   ? Padding(
                       padding: const EdgeInsets.only(right: 10),

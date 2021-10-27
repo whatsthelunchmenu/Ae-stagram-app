@@ -1,4 +1,5 @@
 import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ class UploadImagePicker extends GetWidget<NewStoryController> {
           child: Text(
             "Select Multi Photo",
             style: appBarTitleTextStyle,
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: mainColor,
           ),
         ),
         SizedBox(height: 10),

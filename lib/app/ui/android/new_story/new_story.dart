@@ -6,6 +6,7 @@ import 'package:ae_stagram_app/app/controller/root_controller.dart';
 import 'package:ae_stagram_app/app/ui/android/new_story/components/content_write_board.dart';
 import 'package:ae_stagram_app/app/ui/android/new_story/components/upload_image_picker.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -24,6 +25,10 @@ class NewStory extends GetWidget<NewStoryController> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
           color: Colors.black,
+        ),
+        title: Text(
+          'New Story',
+          style: appBarTitleTextStyle,
         ),
       ),
       body: SingleChildScrollView(
@@ -50,7 +55,7 @@ class NewStory extends GetWidget<NewStoryController> {
                     child: Text(
                       "Create new story",
                       style: GoogleFonts.indieFlower(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 34,
                         fontWeight: FontWeight.bold,
                       ),
