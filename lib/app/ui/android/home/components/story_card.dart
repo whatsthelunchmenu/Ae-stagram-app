@@ -1,5 +1,8 @@
+import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
+import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/animated_button_icon.dart';
+import 'package:ae_stagram_app/app/ui/android/home/components/delete_dialog.dart';
 import 'package:ae_stagram_app/app/ui/android/home/components/story_card_bottom_texts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,7 +27,7 @@ class StoryCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Top(displayName: feed.displayName),
+            Top(feed: feed),
             Mid(images: feed.images),
             Bottom(feed: feed),
           ],
@@ -37,10 +40,10 @@ class StoryCard extends StatelessWidget {
 class Top extends StatelessWidget {
   const Top({
     Key? key,
-    required this.displayName,
+    required this.feed,
   }) : super(key: key);
 
-  final String displayName;
+  final FeedInfo feed;
 
   @override
   Widget build(BuildContext context) {
@@ -65,23 +68,36 @@ class Top extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    displayName,
+                    feed.displayName,
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: PopupMenuButton(
-                  itemBuilder: (context) {
-                    return {'수정', '삭제'}.map((String choice) {
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                ),
-              ),
+              AuthController.to.user?.displayName == feed.displayName
+                  ? Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: PopupMenuButton(
+                        itemBuilder: (context) {
+                          return [
+                            PopupMenuItem(
+                              child: Text('수정'),
+                            ),
+                            PopupMenuItem(
+                              child: Text('삭제'),
+                              onTap: () async {
+                                await deleteDialog(context, feed.id)
+                                    .then((value) {
+                                  Future.delayed(Duration(milliseconds: 500))
+                                      .then((value) async {
+                                    await HomeController.to.refresh();
+                                  });
+                                });
+                              },
+                            ),
+                          ];
+                        },
+                      ),
+                    )
+                  : Container(),
             ],
           ),
         ],

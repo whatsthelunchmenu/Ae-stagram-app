@@ -33,10 +33,34 @@ class HomeRepository {
             "[GetStory] request fail : ${response.statusCode} | ${response.statusMessage}");
         return ResponseModel();
       }
-    } catch (e) {
+    } on DioError catch (e) {
       LoggerController.to.logger
-          .e("[GetStory] request error : ${e.toString()}");
+          .e("[GetStory] request error : ${e.response?.data}");
     }
     return ResponseModel();
+  }
+
+  Future<bool> deleteStory(int id) async {
+    Map<String, dynamic> header = await BaseClient.getHeader();
+    try {
+      Response response = await _dio.delete(
+        '/feeds/$id',
+        options: Options(headers: header),
+      );
+      if (response.statusCode == 200) {
+        final jsonResult = ResponseModel.fromJson(response.data);
+        LoggerController.to.logger
+            .i("[DeleteStory] request success : ${jsonResult.header.message}");
+        return true;
+      } else {
+        LoggerController.to.logger.e(
+            "[DeleteStory] request fail : ${response.statusCode} | ${response.statusMessage}");
+        return false;
+      }
+    } on DioError catch (e) {
+      LoggerController.to.logger
+          .e("[DeleteStory] request error : ${e.response?.data}");
+    }
+    return false;
   }
 }

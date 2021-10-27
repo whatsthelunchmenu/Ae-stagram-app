@@ -1,6 +1,4 @@
 import 'dart:io';
-import 'package:http_parser/http_parser.dart' show MediaType;
-import 'package:dio/dio.dart' as Dio;
 import 'package:ae_stagram_app/app/data/repository/new_story/new_story_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

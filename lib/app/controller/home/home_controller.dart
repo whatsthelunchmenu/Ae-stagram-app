@@ -37,6 +37,10 @@ class HomeController extends GetxController {
     }
   }
 
+  deleteStory(int id) async {
+    repository.deleteStory(id);
+  }
+
   void addEvent() {
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
@@ -47,7 +51,7 @@ class HomeController extends GetxController {
     });
   }
 
-  Future<void> refresh() async {
+  Future refresh() async {
     StoryCardModel? result = await repository.getStory("");
 
     if (result != null)
