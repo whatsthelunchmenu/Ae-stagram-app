@@ -25,7 +25,7 @@ class ContentWriteBoard extends GetWidget<NewStoryController> {
             horizontal: 10,
           ),
           child: TextField(
-            controller: controller.textEditingController,
+            controller: controller.textController,
             maxLength: 200,
             maxLines: null,
             keyboardType: TextInputType.multiline,

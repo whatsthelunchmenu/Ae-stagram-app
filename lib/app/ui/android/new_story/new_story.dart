@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NewStory extends StatelessWidget {
+class NewStory extends GetWidget<NewStoryController> {
   final NewStoryController controller = Get.put(NewStoryController());
 
   @override
@@ -23,40 +23,45 @@ class NewStory extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            UploadImagePicker(),
-            SizedBox(height: 20),
-            ContentWriteBoard(),
-            SizedBox(height: Get.size.height * 0.06),
-            InkWell(
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 15),
-                height: 80,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: mainColor,
-                ),
-                child: Center(
-                  child: Text(
-                    "Create new story",
-                    style: GoogleFonts.indieFlower(
-                      color: Colors.black,
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              UploadImagePicker(),
+              SizedBox(height: 20),
+              ContentWriteBoard(),
+              SizedBox(height: Get.size.height * 0.06),
+              InkWell(
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 15),
+                  height: 80,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: mainColor,
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Create new story",
+                      style: GoogleFonts.indieFlower(
+                        color: Colors.black,
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
+                onTap: () async {
+                  await controller.createStory(
+                      controller.textController.value.text,
+                      controller.pickedImages);
+                },
               ),
-              onTap: () {
-                print(NewStoryController.to.pickedImages);
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

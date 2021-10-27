@@ -36,12 +36,12 @@ dependencies:
   carousel_slider: ^4.0.0
   readmore: ^2.1.0
   google_fonts: ^2.1.0
-  dio: ^4.0.0
   logger: ^1.0.0
   image_picker: ^0.8.4+2
   dotted_decoration: ^2.0.0
   shared_preferences: ^2.0.8
   persistent_bottom_nav_bar: ^4.0.2
+  dio: ^4.0.1
 
 dev_dependencies:
   flutter_test:

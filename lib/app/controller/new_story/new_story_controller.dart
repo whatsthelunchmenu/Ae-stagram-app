@@ -1,5 +1,7 @@
 import 'dart:io';
-
+import 'package:http_parser/http_parser.dart' show MediaType;
+import 'package:dio/dio.dart' as Dio;
+import 'package:ae_stagram_app/app/data/repository/new_story/new_story_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,23 +9,28 @@ import 'package:image_picker/image_picker.dart';
 class NewStoryController extends GetxController {
   static NewStoryController get to => Get.find();
   late ImagePicker _picker;
-  late TextEditingController textEditingController;
+  late TextEditingController _textEditingController;
+  late NewStoryRepository repository;
   RxList<File> _pickedImages = <File>[].obs;
+  RxBool _newStoryLoading = false.obs;
 
   @override
   void onInit() {
     _picker = ImagePicker();
-    textEditingController = TextEditingController();
+    _textEditingController = TextEditingController();
+    repository = NewStoryRepository();
     super.onInit();
   }
 
   @override
   void onClose() {
-    textEditingController.dispose();
+    _textEditingController.dispose();
+    _pickedImages.clear();
     super.onClose();
   }
 
   List<File> get pickedImages => _pickedImages;
+  TextEditingController get textController => _textEditingController;
 
   Future pickMultipleImages() async {
     _pickedImages.clear();
@@ -41,6 +48,13 @@ class NewStoryController extends GetxController {
   Future pickSingleImage() async {
     await _picker.pickImage(source: ImageSource.gallery).then((value) {
       _pickedImages.add(File(value!.path));
+    });
+  }
+
+  Future createStory(String content, List<File> images) async {
+    await repository.createStory(content, images).then((value) {
+      pickedImages.clear();
+      _textEditingController.clear();
     });
   }
 }

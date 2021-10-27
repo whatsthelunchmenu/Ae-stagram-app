@@ -28,7 +28,7 @@ class FeedInfo {
         "id": id,
         "display_name": displayName,
         "content": content,
-        "images": List<dynamic>.from(images!.map((x) => x)),
+        "images": List<String>.from(images!.map((x) => x)),
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
       };

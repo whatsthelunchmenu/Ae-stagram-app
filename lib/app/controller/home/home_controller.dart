@@ -24,15 +24,11 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  createStory(String content, List<String> images) {
-    repository.createStory(content, images);
-  }
-
   getStory() async {
-    StoryCardModel? result =
+    StoryCardModel result =
         await repository.getStory(storyCardResult.value.hasNextToken);
 
-    if (result != null && result.feedInfos.length > 0) {
+    if (result.feedInfos.length > 0) {
       storyCardResult.update((storyCard) {
         storyCard!.hasNextToken = result.hasNextToken;
         storyCard.feedInfos.addAll(result.feedInfos);
@@ -53,10 +49,16 @@ class HomeController extends GetxController {
 
   Future<void> refresh() async {
     StoryCardModel? result = await repository.getStory("");
-    storyCardResult.update((storyCard) {
-      storyCard = result;
-    });
-    storyCardResult.refresh();
+
+    if (result != null)
+      storyCardResult.update((storyCard) {
+        storyCard!.hasNextToken = result.hasNextToken;
+        storyCard.feedInfos = result.feedInfos;
+        storyCard.maxResults = result.maxResults;
+        storyCard.body = result.body;
+        storyCard.header = result.header;
+      });
+
     LoggerController.to.logger.i("[refresh]List Refreshed");
   }
 }

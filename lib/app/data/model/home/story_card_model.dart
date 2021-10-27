@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ae_stagram_app/app/data/model/response_model.dart';
+
 import 'feed_info.dart';
 
 StoryCardModel storyCardModelFromJson(String str) =>
@@ -7,7 +9,7 @@ StoryCardModel storyCardModelFromJson(String str) =>
 
 String storyCardModelToJson(StoryCardModel data) => json.encode(data.toJson());
 
-class StoryCardModel {
+class StoryCardModel extends ResponseModel {
   StoryCardModel({
     this.hasNextToken = "",
     this.maxResults = 0,
@@ -21,9 +23,7 @@ class StoryCardModel {
         hasNextToken: json['hasNextToken'],
         maxResults: json['maxResults'],
         feedInfos: List<FeedInfo>.from(
-          json['feedInfos'].map(
-            (data) => FeedInfo.fromJson(data),
-          ),
+          json['feedInfos'].map<FeedInfo>((data) => FeedInfo.fromJson(data)),
         ),
       );
 
