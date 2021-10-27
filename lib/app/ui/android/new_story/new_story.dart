@@ -1,11 +1,14 @@
 import 'dart:ui';
 
+import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
 import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
+import 'package:ae_stagram_app/app/controller/root_controller.dart';
 import 'package:ae_stagram_app/app/ui/android/new_story/components/content_write_board.dart';
 import 'package:ae_stagram_app/app/ui/android/new_story/components/upload_image_picker.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,9 +58,15 @@ class NewStory extends GetWidget<NewStoryController> {
                   ),
                 ),
                 onTap: () async {
-                  await controller.createStory(
-                      controller.textController.value.text,
-                      controller.pickedImages);
+                  EasyLoading.showProgress(0.5, status: "Create...");
+                  await controller
+                      .createStory(controller.textController.value.text,
+                          controller.pickedImages)
+                      .then((value) {
+                    EasyLoading.dismiss();
+                    RootController.to.tabController.jumpToTab(0);
+                    HomeController.to.refresh();
+                  });
                 },
               ),
             ],

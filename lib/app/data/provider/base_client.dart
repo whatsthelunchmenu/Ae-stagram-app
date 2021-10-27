@@ -31,8 +31,7 @@ class BaseClient {
     String token = await getToken();
     LoggerController.to.logger.i("[getMultiPartHeader] : getToken");
     return {
-      // 'Content-Type': 'multipart/form-data',
-      // 'Accept': 'application/json',
+      'Accept': 'application/json',
       'Authorization': '$token',
     };
   }

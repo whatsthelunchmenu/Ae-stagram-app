@@ -12,7 +12,6 @@ class NewStoryController extends GetxController {
   late TextEditingController _textEditingController;
   late NewStoryRepository repository;
   RxList<File> _pickedImages = <File>[].obs;
-  RxBool _newStoryLoading = false.obs;
 
   @override
   void onInit() {

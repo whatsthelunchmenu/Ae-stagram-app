@@ -4,6 +4,7 @@ import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       initialBinding: InitBinding(),
       getPages: AppPages.pages,
       initialRoute: Routes.INITIAL,
+      builder: EasyLoading.init(),
     );
   }
 }

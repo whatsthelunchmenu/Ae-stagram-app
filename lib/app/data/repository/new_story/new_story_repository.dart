@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:http_parser/http_parser.dart';
 import 'package:ae_stagram_app/app/controller/logger/logger_controller.dart';
 import 'package:ae_stagram_app/app/data/model/response_model.dart';
 import 'package:ae_stagram_app/app/data/provider/base_client.dart';
