@@ -3,6 +3,9 @@ import 'package:ae_stagram_app/app/data/repository/new_story/new_story_repositor
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' show join;
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 class NewStoryController extends GetxController {
   static NewStoryController get to => Get.find();
@@ -58,5 +61,27 @@ class NewStoryController extends GetxController {
       _pickedImages.clear();
       _textEditingController.clear();
     });
+  }
+
+  clear() {
+    _pickedImages.clear();
+    _textEditingController.clear();
+  }
+
+  toggleShared(List<String>? images) async {
+    final List<File> syncImages = [];
+    int count = 0;
+    if (images != null) {
+      for (var i in images) {
+        final response = await http.get(Uri.parse(i));
+        final documentDirectory = await getApplicationDocumentsDirectory();
+        final file =
+            File(join(documentDirectory.path, 'temp_image_$count.png'));
+        file.writeAsBytes(response.bodyBytes);
+        count++;
+        syncImages.add(file);
+      }
+      _pickedImages(syncImages);
+    }
   }
 }

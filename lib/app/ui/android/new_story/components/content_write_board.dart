@@ -1,6 +1,7 @@
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show NewStoryController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,14 +12,7 @@ class ContentWriteBoard extends GetWidget<NewStoryController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Content",
-          style: GoogleFonts.indieFlower(
-            fontSize: 32,
-            color: Colors.blueAccent,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Text("Content", style: clearButtonTextStyle),
         SizedBox(height: 10),
         Container(
           height: 200,
@@ -47,7 +41,9 @@ class ContentWriteBoard extends GetWidget<NewStoryController> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.textController.clear();
+              },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
                 alignment: Alignment.center,

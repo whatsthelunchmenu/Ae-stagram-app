@@ -30,3 +30,9 @@ final TextStyle myPageBoxContentTextStyle = GoogleFonts.nanumPenScript(
   fontWeight: FontWeight.w500,
   color: Colors.lightBlue,
 );
+
+final TextStyle clearButtonTextStyle = GoogleFonts.indieFlower(
+  color: Colors.red,
+  fontSize: 24,
+  fontWeight: FontWeight.w700,
+);

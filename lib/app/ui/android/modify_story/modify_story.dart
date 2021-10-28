@@ -1,4 +1,8 @@
+import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
+import 'package:ae_stagram_app/app/ui/android/modify_story/components/cancel_dialog.dart';
+import 'package:ae_stagram_app/app/ui/android/modify_story/components/upload_image_picker.dart';
+import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +13,7 @@ class ModifyStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(feed);
+    NewStoryController.to.toggleShared(feed.images);
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -17,10 +21,17 @@ class ModifyStory extends StatelessWidget {
         iconTheme: IconThemeData(
           color: Colors.black,
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+        leading: TextButton(
+          child: Text(
+            '취소',
+            style: TextStyle(
+              color: mainColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           onPressed: () {
-            Get.back();
+            cancelDialog(context).then((value) => Get.back());
           },
         ),
         title: Text(
@@ -28,7 +39,17 @@ class ModifyStory extends StatelessWidget {
           style: appBarTitleTextStyle,
         ),
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              UploadImagePicker(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

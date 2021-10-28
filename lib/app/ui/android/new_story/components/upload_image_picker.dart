@@ -11,15 +11,31 @@ class UploadImagePicker extends GetWidget<NewStoryController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ElevatedButton(
-          onPressed: controller.pickMultipleImages,
-          child: Text(
-            "Select Multi Photo",
-            style: appBarTitleTextStyle,
-          ),
-          style: ElevatedButton.styleFrom(
-            primary: mainColor,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ElevatedButton(
+              onPressed: controller.pickMultipleImages,
+              child: Text(
+                "Select Multi Photo",
+                style: appBarTitleTextStyle,
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: mainColor,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                controller.pickedImages.clear();
+              },
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                alignment: Alignment.center,
+              ),
+              child: Text("Clear", style: clearButtonTextStyle),
+            ),
+          ],
         ),
         SizedBox(height: 10),
         Container(
