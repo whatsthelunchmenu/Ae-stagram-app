@@ -1,7 +1,6 @@
-import 'package:ae_stagram_app/app/controller/controllers.dart';
-import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/story_card.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/story_card_empty.dart';
+import './components.dart' show StoryCard, StoryCardEmpty;
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show HomeController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

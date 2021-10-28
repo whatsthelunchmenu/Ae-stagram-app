@@ -1,9 +1,10 @@
-import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
-import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
+import './components.dart'
+    show AnimationIconButton, deleteDialog, CardBottomTexts;
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show AuthController, HomeController;
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/animated_button_icon.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/delete_dialog.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/story_card_bottom_texts.dart';
+import 'package:ae_stagram_app/app/route/app_pages.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -81,6 +82,9 @@ class Top extends StatelessWidget {
                           return [
                             PopupMenuItem(
                               child: Text('수정'),
+                              onTap: () async {
+                                Get.toNamed(Routes.MODIFYPAGE, arguments: feed);
+                              },
                             ),
                             PopupMenuItem(
                               child: Text('삭제'),

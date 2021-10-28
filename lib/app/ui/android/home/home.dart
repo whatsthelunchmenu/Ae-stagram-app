@@ -1,6 +1,6 @@
-import 'package:ae_stagram_app/app/controller/controllers.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/drawer.dart';
-import 'package:ae_stagram_app/app/ui/android/home/components/story_swipe.dart';
+import './components/components.dart' show HomeDrawer, StorySwipe;
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show HomeController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';

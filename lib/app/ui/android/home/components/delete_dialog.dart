@@ -1,4 +1,5 @@
-import 'package:ae_stagram_app/app/controller/home/home_controller.dart';
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show HomeController;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -13,6 +13,7 @@ class AppPages {
     GetPage(
       name: Routes.HOME,
       page: () => Home(),
+      transition: Transition.fade,
     ),
     GetPage(
       name: Routes.MYPAGE,

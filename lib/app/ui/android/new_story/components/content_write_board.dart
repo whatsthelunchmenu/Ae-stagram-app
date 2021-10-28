@@ -1,4 +1,5 @@
-import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show NewStoryController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

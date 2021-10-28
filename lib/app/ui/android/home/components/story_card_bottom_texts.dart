@@ -1,6 +1,6 @@
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
 import 'package:ae_stagram_app/app/route/app_pages.dart';
-import 'package:ae_stagram_app/app/ui/android/detail/comment_detail.dart';
+import 'package:ae_stagram_app/app/ui/android/pages.dart' show CommentDetail;
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:get/get.dart';
