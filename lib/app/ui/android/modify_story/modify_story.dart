@@ -28,6 +28,7 @@ class ModifyStory extends StatelessWidget {
           style: appBarTitleTextStyle,
         ),
       ),
+      body: Container(),
     );
   }
 }

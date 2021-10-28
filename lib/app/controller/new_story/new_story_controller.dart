@@ -30,13 +30,18 @@ class NewStoryController extends GetxController {
   TextEditingController get textController => _textEditingController;
 
   Future pickMultipleImages() async {
-    _pickedImages.clear();
+    // _pickedImages.clear();
     await _picker.pickMultiImage().then(
       (value) {
-        if (_pickedImages.length > 5) {
-          _pickedImages(value!.map((e) => File(e.path)).toList().sublist(0, 5));
+        if (value!.length > 5) {
+          _pickedImages
+              .addAll(value.map((e) => File(e.path)).toList().sublist(0, 5));
         } else {
-          _pickedImages(value!.map((e) => File(e.path)).toList());
+          _pickedImages.addAll(value.map((e) => File(e.path)).toList());
+        }
+
+        if (_pickedImages.length > 5) {
+          _pickedImages(_pickedImages.sublist(0, 5));
         }
       },
     );
@@ -50,7 +55,7 @@ class NewStoryController extends GetxController {
 
   Future createStory(String content, List<File> images) async {
     await repository.createStory(content, images).then((value) {
-      pickedImages.clear();
+      _pickedImages.clear();
       _textEditingController.clear();
     });
   }
