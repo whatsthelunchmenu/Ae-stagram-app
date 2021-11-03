@@ -1,4 +1,4 @@
-import './components/components.dart' show HomeDrawer, StorySwipe;
+import 'components.dart' show HomeDrawer, StorySwipe;
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show HomeController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';

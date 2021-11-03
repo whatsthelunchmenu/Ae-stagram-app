@@ -1,4 +1,4 @@
-import './components.dart' show StoryCard, StoryCardEmpty;
+import '../components.dart' show StoryCard, StoryCardEmpty;
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show HomeController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';

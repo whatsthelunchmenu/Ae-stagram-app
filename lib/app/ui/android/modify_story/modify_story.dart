@@ -1,9 +1,9 @@
-import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show NewStoryController;
+
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
-import 'package:ae_stagram_app/app/ui/android/modify_story/components/cancel_dialog.dart';
-import 'package:ae_stagram_app/app/ui/android/new_story/components/content_write_board.dart';
-import 'package:ae_stagram_app/app/ui/android/new_story/components/create_button.dart';
-import 'package:ae_stagram_app/app/ui/android/new_story/components/upload_image_picker.dart';
+import 'components.dart' show ModifyBody, cancelDialog;
+
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
@@ -43,21 +43,7 @@ class ModifyStory extends StatelessWidget {
           style: appBarTitleTextStyle,
         ),
       ),
-      body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              UploadImagePicker(),
-              SizedBox(height: 10),
-              ContentWriteBoard(),
-              SizedBox(height: Get.size.height * 0.04),
-              CreateButton(),
-            ],
-          ),
-        ),
-      ),
+      body: ModifyBody(),
     );
   }
 }

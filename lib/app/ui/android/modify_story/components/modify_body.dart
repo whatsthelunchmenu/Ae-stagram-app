@@ -1,14 +1,13 @@
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show NewStoryController;
+import 'package:ae_stagram_app/app/ui/android/modify_story/components/create_button.dart';
 import 'package:ae_stagram_app/app/ui/android/utils/components.dart'
     show UploadImagePicker, ContentWriteBoard;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'create_button.dart';
-
-class NewStoryBody extends GetWidget<NewStoryController> {
-  const NewStoryBody({
+class ModifyBody extends GetWidget<NewStoryController> {
+  const ModifyBody({
     Key? key,
   }) : super(key: key);
 
@@ -24,7 +23,7 @@ class NewStoryBody extends GetWidget<NewStoryController> {
             SizedBox(height: 10),
             ContentWriteBoard(),
             SizedBox(height: Get.size.height * 0.04),
-            CreateButton(),
+            ModifyButton(),
           ],
         ),
       ),

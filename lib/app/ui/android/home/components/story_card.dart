@@ -1,4 +1,4 @@
-import './components.dart'
+import '../components.dart'
     show AnimationIconButton, deleteDialog, CardBottomTexts;
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show AuthController, HomeController;

@@ -1,6 +1,6 @@
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show NewStoryController;
-import './components/components.dart' show NewStoryBody;
+import 'components.dart' show NewStoryBody;
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 
 import 'package:flutter/material.dart';
