@@ -19,7 +19,7 @@ Future cancelDialog(BuildContext context) async {
           TextButton(
               onPressed: () async {
                 await NewStoryController.to.clear();
-                Get.back();
+                Get.back(result: true);
               },
               child: Text(
                 '예',
@@ -27,7 +27,11 @@ Future cancelDialog(BuildContext context) async {
                   color: Colors.red,
                 ),
               )),
-          TextButton(onPressed: () {}, child: Text('아니요')),
+          TextButton(
+              onPressed: () {
+                Get.back(result: false);
+              },
+              child: Text('아니요')),
         ],
       );
     },

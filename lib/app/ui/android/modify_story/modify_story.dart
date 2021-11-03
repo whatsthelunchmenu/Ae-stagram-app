@@ -1,7 +1,9 @@
 import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
 import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
 import 'package:ae_stagram_app/app/ui/android/modify_story/components/cancel_dialog.dart';
-import 'package:ae_stagram_app/app/ui/android/modify_story/components/upload_image_picker.dart';
+import 'package:ae_stagram_app/app/ui/android/new_story/components/content_write_board.dart';
+import 'package:ae_stagram_app/app/ui/android/new_story/components/create_button.dart';
+import 'package:ae_stagram_app/app/ui/android/new_story/components/upload_image_picker.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class ModifyStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NewStoryController.to.toggleShared(feed.images);
+    NewStoryController.to.toggleShared(feed.images, feed.content);
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -31,7 +33,9 @@ class ModifyStory extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            cancelDialog(context).then((value) => Get.back());
+            cancelDialog(context).then((value) {
+              if (value) Get.back();
+            });
           },
         ),
         title: Text(
@@ -46,6 +50,10 @@ class ModifyStory extends StatelessWidget {
           child: Column(
             children: [
               UploadImagePicker(),
+              SizedBox(height: 10),
+              ContentWriteBoard(),
+              SizedBox(height: Get.size.height * 0.04),
+              CreateButton(),
             ],
           ),
         ),

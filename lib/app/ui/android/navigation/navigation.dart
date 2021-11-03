@@ -19,6 +19,8 @@ class NavigationPage extends GetView<RootController> {
         onItemSelected: (index) {
           if (index != 1) {
             NewStoryController.to.textFocusNode.unfocus();
+          } else {
+            NewStoryController.to.textFocusNode.requestFocus();
           }
         },
         confineInSafeArea: true,

@@ -41,67 +41,6 @@ class MyPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        padding: const EdgeInsets.all(10),
-                        height: Get.size.height * 0.25,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: lightMaincolor),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Stories',
-                              style: myPageBoxTitleTextStyle,
-                            ),
-                            SizedBox(height: Get.size.height * 0.05),
-                            Center(
-                              child: Text(
-                                '1,230',
-                                style: myPageBoxContentTextStyle,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        padding: const EdgeInsets.all(10),
-                        height: Get.size.height * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: lightMaincolor,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Comments',
-                              style: myPageBoxTitleTextStyle,
-                            ),
-                            SizedBox(height: Get.size.height * 0.05),
-                            Center(
-                              child: Text(
-                                '1,230',
-                                style: myPageBoxContentTextStyle,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
             ],
           ),
         ),

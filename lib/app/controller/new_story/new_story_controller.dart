@@ -72,7 +72,8 @@ class NewStoryController extends GetxController {
     _textEditingController.clear();
   }
 
-  toggleShared(List<String>? images) async {
+  toggleShared(List<String>? images, String? content) async {
+    // _pickedImages.clear();
     final List<File> syncImages = [];
     int count = 0;
     if (images != null) {
@@ -86,6 +87,9 @@ class NewStoryController extends GetxController {
         syncImages.add(file);
       }
       _pickedImages(syncImages);
+    }
+    if (content != null) {
+      _textEditingController.text = content;
     }
   }
 }
