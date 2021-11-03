@@ -11,6 +11,7 @@ class NewStoryController extends GetxController {
   static NewStoryController get to => Get.find();
   late ImagePicker _picker;
   late TextEditingController _textEditingController;
+  late FocusNode _textFocusNode;
   late NewStoryRepository repository;
   RxList<File> _pickedImages = <File>[].obs;
 
@@ -18,6 +19,7 @@ class NewStoryController extends GetxController {
   void onInit() {
     _picker = ImagePicker();
     _textEditingController = TextEditingController();
+    _textFocusNode = FocusNode();
     repository = NewStoryRepository();
     super.onInit();
   }
@@ -25,12 +27,14 @@ class NewStoryController extends GetxController {
   @override
   void onClose() {
     _textEditingController.dispose();
+    _textFocusNode.dispose();
     _pickedImages.clear();
     super.onClose();
   }
 
   List<File> get pickedImages => _pickedImages;
   TextEditingController get textController => _textEditingController;
+  FocusNode get textFocusNode => _textFocusNode;
 
   Future pickMultipleImages() async {
     // _pickedImages.clear();

@@ -13,16 +13,15 @@ class NewStoryBody extends GetWidget<NewStoryController> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: NeverScrollableScrollPhysics(),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             UploadImagePicker(),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ContentWriteBoard(),
-            SizedBox(height: Get.size.height * 0.06),
+            SizedBox(height: Get.size.height * 0.04),
             CreateButton(),
           ],
         ),

@@ -12,7 +12,7 @@ class NewStory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.white,

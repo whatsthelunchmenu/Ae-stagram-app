@@ -15,17 +15,19 @@ class ContentWriteBoard extends GetWidget<NewStoryController> {
         Text("Content", style: clearButtonTextStyle),
         SizedBox(height: 10),
         Container(
-          height: 200,
+          height: 120,
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
           ),
           child: TextField(
+            focusNode: controller.textFocusNode,
+            autofocus: false,
             controller: controller.textController,
             maxLength: 200,
             maxLines: null,
             keyboardType: TextInputType.multiline,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 16,
             ),
             decoration: InputDecoration(
               border: InputBorder.none,

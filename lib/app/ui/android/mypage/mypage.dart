@@ -22,11 +22,11 @@ class MyPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 100,
+                height: 50,
               ),
               Center(
                 child: CircleAvatar(
-                  radius: 80,
+                  radius: 40,
                   backgroundImage:
                       NetworkImage("${AuthController.to.user?.photoURL}"),
                 ),
@@ -36,7 +36,7 @@ class MyPage extends StatelessWidget {
                 child: Text(
                   "${AuthController.to.user?.displayName}",
                   style: GoogleFonts.indieFlower(
-                    fontSize: 36,
+                    fontSize: 24,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

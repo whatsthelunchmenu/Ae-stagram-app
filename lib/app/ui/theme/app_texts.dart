@@ -8,7 +8,7 @@ final TextStyle actionButtonTextStyle = GoogleFonts.indieFlower(
 );
 
 final TextStyle appBarTitleTextStyle = GoogleFonts.indieFlower(
-  fontSize: 30,
+  fontSize: 26,
   fontWeight: FontWeight.bold,
   color: Colors.black,
 );
@@ -20,7 +20,7 @@ final TextStyle mainIconTextStyle = GoogleFonts.indieFlower(
 );
 
 final TextStyle myPageBoxTitleTextStyle = GoogleFonts.indieFlower(
-  fontSize: 32,
+  fontSize: 24,
   fontWeight: FontWeight.w700,
   color: Colors.lightBlue,
 );
@@ -33,6 +33,6 @@ final TextStyle myPageBoxContentTextStyle = GoogleFonts.nanumPenScript(
 
 final TextStyle clearButtonTextStyle = GoogleFonts.indieFlower(
   color: Colors.red,
-  fontSize: 24,
+  fontSize: 22,
   fontWeight: FontWeight.w700,
 );

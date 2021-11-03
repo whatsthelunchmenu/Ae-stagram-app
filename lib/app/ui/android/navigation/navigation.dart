@@ -1,3 +1,4 @@
+import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
 import 'package:ae_stagram_app/app/controller/root_controller.dart';
 import 'package:ae_stagram_app/app/ui/android/pages.dart'
     show MyPage, Home, NewStory;
@@ -15,6 +16,11 @@ class NavigationPage extends GetView<RootController> {
         controller: controller.tabController,
         screens: _buildScreens(),
         items: _navBarsItems(),
+        onItemSelected: (index) {
+          if (index != 1) {
+            NewStoryController.to.textFocusNode.unfocus();
+          }
+        },
         confineInSafeArea: true,
         backgroundColor: Colors.white, // Default is Colors.white.
         handleAndroidBackButtonPress: true, // Default is true.

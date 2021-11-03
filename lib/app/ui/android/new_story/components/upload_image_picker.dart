@@ -11,37 +11,11 @@ class UploadImagePicker extends GetWidget<NewStoryController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            ElevatedButton(
-              onPressed: controller.pickMultipleImages,
-              child: Text(
-                "Select Multi Photo",
-                style: appBarTitleTextStyle,
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: mainColor,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                controller.pickedImages.clear();
-              },
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
-                alignment: Alignment.center,
-              ),
-              child: Text("Clear", style: clearButtonTextStyle),
-            ),
-          ],
-        ),
-        SizedBox(height: 10),
+        Text('Photo', style: clearButtonTextStyle),
+        SizedBox(height: 5),
         Container(
-          padding: const EdgeInsets.all(5),
           width: double.infinity,
-          height: 150,
+          height: 120,
           child: Obx(
             () => SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -75,9 +49,9 @@ class UploadImagePicker extends GetWidget<NewStoryController> {
                                   child: InkWell(
                                     child: CircleAvatar(
                                       child: Center(
-                                        child: Icon(Icons.close),
+                                        child: Icon(Icons.close, size: 15),
                                       ),
-                                      radius: 14,
+                                      radius: 13,
                                       backgroundColor: lightMaincolor,
                                     ),
                                     onTap: () {
@@ -100,13 +74,13 @@ class UploadImagePicker extends GetWidget<NewStoryController> {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: InkWell(
                             child: CircleAvatar(
-                              radius: 35,
+                              radius: 25,
                               child: Icon(
                                 Icons.add,
-                                size: 40,
+                                size: 25,
                               ),
                             ),
-                            onTap: controller.pickSingleImage,
+                            onTap: controller.pickMultipleImages,
                           ),
                         )
                       : Container()

@@ -13,8 +13,8 @@ class CreateButton extends GetWidget<NewStoryController> {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: const EdgeInsets.only(bottom: 15),
-        height: 80,
+        margin: const EdgeInsets.only(bottom: 25, left: 20, right: 20),
+        height: 45,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -25,7 +25,7 @@ class CreateButton extends GetWidget<NewStoryController> {
             "Create new story",
             style: GoogleFonts.indieFlower(
               color: Colors.white,
-              fontSize: 34,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
