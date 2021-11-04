@@ -1,5 +1,7 @@
-import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
-import 'package:ae_stagram_app/app/controller/root_controller.dart';
+// import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
+// import 'package:ae_stagram_app/app/controller/root_controller.dart';
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show NewStoryController, RootController, RouteName;
 import 'package:ae_stagram_app/app/ui/android/pages.dart'
     show MyPage, Home, NewStory;
 import 'package:flutter/cupertino.dart';

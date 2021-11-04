@@ -52,11 +52,7 @@ class ContentWriteBoard extends GetWidget<NewStoryController> {
               ),
               child: Text(
                 "Clear",
-                style: GoogleFonts.indieFlower(
-                  color: Colors.red,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: clearButtonTextStyle,
               ),
             ),
           ],

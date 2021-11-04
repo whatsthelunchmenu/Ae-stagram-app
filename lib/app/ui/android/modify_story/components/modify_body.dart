@@ -1,10 +1,12 @@
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show NewStoryController;
-import '../components.dart' show ModifyButton;
+
 import 'package:ae_stagram_app/app/ui/android/utils/components.dart'
     show UploadImagePicker, ContentWriteBoard;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'modify_button.dart';
 
 class ModifyBody extends GetWidget<NewStoryController> {
   const ModifyBody({

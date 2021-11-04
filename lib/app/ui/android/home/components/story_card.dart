@@ -2,7 +2,7 @@ import '../components.dart'
     show AnimationIconButton, deleteDialog, CardBottomTexts;
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show AuthController, HomeController;
-import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
+import 'package:ae_stagram_app/app/data/model/models.dart' show FeedInfo;
 import 'package:ae_stagram_app/app/route/app_pages.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';

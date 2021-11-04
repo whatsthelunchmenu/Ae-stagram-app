@@ -1,6 +1,5 @@
-import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
+import 'package:ae_stagram_app/app/data/model/models.dart' show FeedInfo;
 import 'package:ae_stagram_app/app/route/app_pages.dart';
-import 'package:ae_stagram_app/app/ui/android/pages.dart' show CommentDetail;
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:get/get.dart';
@@ -38,7 +37,7 @@ class CardBottomTexts extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: InkWell(
               onTap: () {
-                Get.to(() => CommentDetail());
+                Get.toNamed(Routes.COMMENT_DETAIL, arguments: feed);
               },
               // TODO : 댓글 여부에 따라서 분기
               child: InkWell(

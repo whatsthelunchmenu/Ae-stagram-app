@@ -1,7 +1,7 @@
 import 'package:ae_stagram_app/app/controller/controllers.dart'
     show NewStoryController;
 
-import 'package:ae_stagram_app/app/data/model/home/feed_info.dart';
+import 'package:ae_stagram_app/app/data/model/models.dart' show FeedInfo;
 import 'components.dart' show ModifyBody, cancelDialog;
 
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';

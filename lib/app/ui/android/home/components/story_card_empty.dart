@@ -1,3 +1,4 @@
+import 'package:ae_stagram_app/app/ui/theme/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,10 +34,7 @@ class StoryCardEmpty extends StatelessWidget {
             Text(
               '피드가 없어요... \n이야기를 들려주세요!',
               textAlign: TextAlign.center,
-              style: GoogleFonts.nanumBrushScript(
-                fontSize: 45,
-                fontWeight: FontWeight.w600,
-              ),
+              style: emptyMessageTextStyle,
             )
           ],
         ),

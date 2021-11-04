@@ -1,4 +1,5 @@
-import 'package:ae_stagram_app/app/controller/auth/auth_controller.dart';
+import 'package:ae_stagram_app/app/controller/controllers.dart'
+    show AuthController;
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';

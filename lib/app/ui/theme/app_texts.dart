@@ -36,3 +36,14 @@ final TextStyle clearButtonTextStyle = GoogleFonts.indieFlower(
   fontSize: 22,
   fontWeight: FontWeight.w700,
 );
+
+final TextStyle emptyMessageTextStyle = GoogleFonts.nanumBrushScript(
+  fontSize: 45,
+  fontWeight: FontWeight.w600,
+);
+
+final TextStyle commentDetailTitleTextStyle = GoogleFonts.nanumBrushScript(
+  fontSize: 24,
+  color: Colors.black,
+  fontWeight: FontWeight.w600,
+);
