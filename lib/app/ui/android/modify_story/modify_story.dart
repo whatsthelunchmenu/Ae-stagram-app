@@ -43,7 +43,7 @@ class ModifyStory extends StatelessWidget {
           style: appBarTitleTextStyle,
         ),
       ),
-      body: ModifyBody(),
+      body: ModifyBody(feedId: feed.id),
     );
   }
 }

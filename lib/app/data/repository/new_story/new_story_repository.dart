@@ -27,12 +27,9 @@ class NewStoryRepository {
         try {
           Response response = await _dio.post(
             '/feeds',
-            options: Options(
-              headers: header,
-            ),
+            options: Options(headers: header),
             data: formData,
           );
-
           if (response.statusCode == 200) {
             final jsonResult = ResponseModel.fromJson(response.data);
             LoggerController.to.logger

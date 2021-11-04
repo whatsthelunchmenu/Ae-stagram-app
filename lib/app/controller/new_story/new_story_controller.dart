@@ -62,8 +62,7 @@ class NewStoryController extends GetxController {
 
   Future createStory(String content, List<File> images) async {
     await repository.createStory(content, images).then((value) {
-      _pickedImages.clear();
-      _textEditingController.clear();
+      clear();
     });
   }
 

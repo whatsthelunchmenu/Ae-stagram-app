@@ -3,11 +3,13 @@ import 'package:ae_stagram_app/app/controller/controllers.dart'
 import 'package:ae_stagram_app/app/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ModifyButton extends GetWidget<NewStoryController> {
-  const ModifyButton({Key? key}) : super(key: key);
+  const ModifyButton({required this.feedId, Key? key}) : super(key: key);
+  final int feedId;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,13 @@ class ModifyButton extends GetWidget<NewStoryController> {
       ),
       onTap: () async {
         EasyLoading.showProgress(0.5, status: "Modify...");
-        await controller
-            .createStory(
-                controller.textController.value.text, controller.pickedImages)
+        await HomeController.to
+            .modifyStory(feedId, controller.textController.value.text,
+                controller.pickedImages)
             .then((value) {
           EasyLoading.dismiss();
-          RootController.to.tabController.jumpToTab(0);
           HomeController.to.refresh();
+          Get.back();
         });
       },
     );

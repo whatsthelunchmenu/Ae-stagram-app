@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:ae_stagram_app/app/controller/logger/logger_controller.dart';
+import 'package:ae_stagram_app/app/controller/new_story/new_story_controller.dart';
 import 'package:ae_stagram_app/app/data/model/home/story_card_model.dart';
 import 'package:ae_stagram_app/app/data/repository/home/home_repository.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +41,12 @@ class HomeController extends GetxController {
   }
 
   deleteStory(int id) async {
-    repository.deleteStory(id);
+    await repository.deleteStory(id);
+  }
+
+  modifyStory(int id, String content, List<File> images) async {
+    await repository.modifyStory(id, content, images);
+    NewStoryController.to.clear();
   }
 
   void addEvent() {

@@ -27,7 +27,11 @@ Future deleteDialog(BuildContext context, int feedId) async {
                   color: Colors.red,
                 ),
               )),
-          TextButton(onPressed: () {}, child: Text('취소')),
+          TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text('취소')),
         ],
       );
     },
