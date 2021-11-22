@@ -33,30 +33,31 @@ class CardBottomTexts extends StatelessWidget {
             ),
             lessStyle: TextStyle(color: Colors.grey),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: InkWell(
-              onTap: () {
-                Get.toNamed(Routes.COMMENT_DETAIL, arguments: feed);
-              },
-              // TODO : 댓글 여부에 따라서 분기
-              child: InkWell(
-                child: Text(
-                  '댓글 10개 모두 보기',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey,
-                  ),
-                ),
-                onTap: () {
-                  Get.toNamed(
-                    Routes.COMMENT_DETAIL,
-                    arguments: feed,
-                  );
-                },
-              ),
-            ),
-          ),
+          SizedBox(height: 10),
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 10, bottom: 10),
+          //   child: InkWell(
+          //     onTap: () {
+          //       Get.toNamed(Routes.COMMENT_DETAIL, arguments: feed);
+          //     },
+          //     // TODO : 댓글 여부에 따라서 분기
+          //     child: InkWell(
+          //       child: Text(
+          //         '댓글 10개 모두 보기',
+          //         style: TextStyle(
+          //           fontSize: 13,
+          //           color: Colors.grey,
+          //         ),
+          //       ),
+          //       onTap: () {
+          //         Get.toNamed(
+          //           Routes.COMMENT_DETAIL,
+          //           arguments: feed,
+          //         );
+          //       },
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.only(top: 5, bottom: 20),
             child: Row(
