@@ -231,13 +231,13 @@ class Bottom extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-              Text(
-                " 1000",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // Text(
+              //   " 1000",
+              //   style: TextStyle(
+              //     fontSize: 15,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
             ],
           ),
           CardBottomTexts(feed: feed),
