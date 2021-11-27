@@ -42,17 +42,17 @@ class CardBottomTexts extends StatelessWidget {
               // TODO : 댓글 여부에 따라서 분기
               child: InkWell(
                 child: Text(
-                  '댓글 10개 모두 보기',
+                  '댓글 보기...',
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.grey,
                   ),
                 ),
                 onTap: () {
-                  Get.toNamed(
-                    Routes.COMMENT_DETAIL,
-                    arguments: feed,
-                  );
+                  // Get.toNamed(
+                  //   Routes.COMMENT_DETAIL,
+                  //   arguments: feed,
+                  // );
                 },
               ),
             ),
