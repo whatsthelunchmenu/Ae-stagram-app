@@ -1,3 +1,5 @@
+import 'package:ae_stagram_app/app/ui/android/home/components/report_dialog.dart';
+
 import '../components.dart'
     show AnimationIconButton, deleteDialog, CardBottomTexts;
 import 'package:ae_stagram_app/app/controller/controllers.dart'
@@ -102,7 +104,24 @@ class Top extends StatelessWidget {
                         },
                       ),
                     )
-                  : Container(),
+                  : Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: PopupMenuButton(
+                        itemBuilder: (context) {
+                          return [
+                            PopupMenuItem(
+                              child: Text(
+                                '신고하기',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                              onTap: () async {
+                                await reportDialog(context);
+                              },
+                            ),
+                          ];
+                        },
+                      ),
+                    )
             ],
           ),
         ],
@@ -212,13 +231,13 @@ class Bottom extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-              Text(
-                " 1000",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // Text(
+              //   " 1000",
+              //   style: TextStyle(
+              //     fontSize: 15,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
             ],
           ),
           CardBottomTexts(feed: feed),
