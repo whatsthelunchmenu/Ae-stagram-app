@@ -1,4 +1,4 @@
-package com.example.ae_stagram_app
+package com.ae_stagram_app
 
 import io.flutter.embedding.android.FlutterActivity
 
